@@ -1,0 +1,329 @@
+##############################################################################
+#
+#  JESProvider Input Settings
+#    Full list of nuisance parameters from Moriond 2013 iteration of the in-situ JES
+#    Jan 21, 2013
+#
+#  S. Schramm, B. Malaescu, C. Doglioni, D. Gillberg
+# 
+##############################################################################
+
+JESUncertaintyRootFile:           JES_2012/Moriond2013/JESUncertainty_2012.root
+
+##############################################################################
+# 
+#   Settings for JES Components
+#
+##############################################################################
+
+  # LAr EM scale (material component)
+JESComponent.1.Desc:              Electron/photon energy scale material uncertainty
+JESComponent.1.Name:              Insitu_LArESmaterial
+JESComponent.1.Type:              Detector
+JESComponent.1.CorrSubComponents: Gjet_GamESmaterial Zjet_ElecESmaterial 
+
+  # LAr EM scale (presampler component)
+JESComponent.2.Desc:              Electron/photon energy scale presampler uncertainty
+JESComponent.2.Name:              Insitu_LArESpresampler
+JESComponent.2.Type:              Detector
+JESComponent.2.CorrSubComponents: Gjet_GamESpresampler Zjet_ElecESpresampler
+
+  # LAr EM scale (Z->ee component)
+JESComponent.3.Desc:              Electron/photon energy scale Z->ee uncertainty
+JESComponent.3.Name:              Insitu_LArESZee
+JESComponent.3.Type:              Detector
+JESComponent.3.CorrSubComponents: Gjet_GamESZee Zjet_ElecESZee
+
+  # gamma+jet: dPhi 
+JESComponent.4.Desc:              gamma+jet dPhi
+JESComponent.4.Name:              Gjet_dPhi
+JESComponent.4.Type:              Modelling
+
+  # gamma+jet: Generator
+JESComponent.5.Desc:              gamma+jet Monte Carlo generator difference
+JESComponent.5.Name:              Gjet_Generator
+JESComponent.5.Type:              Modelling
+
+  # gamma+jet: Out-of-cone
+JESComponent.6.Desc:              gamma+jet out-of-cone radiation
+JESComponent.6.Name:              Gjet_OOC
+JESComponent.6.Type:              Modelling
+
+  # gamma+jet: Purity
+JESComponent.7.Desc:              gamma+jet photon purity
+JESComponent.7.Name:              Gjet_Purity
+JESComponent.7.Type:              Detector
+
+  # gamma+jet: Veto
+JESComponent.8.Desc:              gamma+jet radiation suppression (second jet veto)
+JESComponent.8.Name:              Gjet_Veto
+JESComponent.8.Type:              Modelling
+
+  # Z+jet: Extrapolation 
+JESComponent.9.Desc:              Z+jet fit extrapolation
+JESComponent.9.Name:              Zjet_Extrapolation
+JESComponent.9.Type:              Modelling
+
+  # Z+jet: MC
+JESComponent.10.Desc:             Z+jet Monte Carlo generator difference
+JESComponent.10.Name:             Zjet_MC
+JESComponent.10.Type:             Modelling
+
+  # Z+jet: JVF
+JESComponent.11.Desc:             Z+jet JVF selection cut
+JESComponent.11.Name:             Zjet_JVF
+JESComponent.11.Type:             Mixed
+
+  # Z+jet: k-term
+JESComponent.12.Desc:             Z+jet out-of-cone radiation
+JESComponent.12.Name:             Zjet_KTerm
+JESComponent.12.Type:             Modelling
+
+  # Z+jet: Veto
+JESComponent.13.Desc:             Z+jet radiation suppression (second jet veto)
+JESComponent.13.Name:             Zjet_Veto
+JESComponent.13.Type:             Modelling
+
+  # MJB: Alpha
+JESComponent.14.Desc:             MJB jet topology selection (alpha)
+JESComponent.14.Name:             MJB_Alpha
+JESComponent.14.Type:             Modelling
+
+  # MJB: Beta
+JESComponent.15.Desc:             MJB jet topology selection (beta)
+JESComponent.15.Name:             MJB_Beta
+JESComponent.15.Type:             Modelling
+
+  # MJB: Fragmentation
+JESComponent.16.Desc:             MJB Fragmentation uncertainty
+JESComponent.16.Name:             MJB_Fragmentation
+JESComponent.16.Type:             Mixed
+
+  # MJB: Threshold
+JESComponent.17.Desc:             MJB uncertainty due to jet threshold
+JESComponent.17.Name:             MJB_Threshold
+JESComponent.17.Type:             Mixed
+
+  # MJB: Asymmetry selection
+JESComponent.18.Desc:             MJB asymmetry uncertainty
+JESComponent.18.Name:             MJB_Asym
+JESComponent.18.Type:             Modelling
+
+
+##############################################################################
+# 
+#   Statistical components, identified by source
+#
+##############################################################################
+
+  # gamma+jet statistical component No. 1
+JESComponent.19.Desc:             gamma+jet statistical uncertainty No. 1
+JESComponent.19.Name:             Gjet_Stat1
+JESComponent.19.Type:             Statistical
+
+  # gamma+jet statistical component No. 2
+JESComponent.20.Desc:             gamma+jet statistical uncertainty No. 2
+JESComponent.20.Name:             Gjet_Stat2
+JESComponent.20.Type:             Statistical
+
+  # gamma+jet statistical component No. 3
+JESComponent.21.Desc:             gamma+jet statistical uncertainty No. 3
+JESComponent.21.Name:             Gjet_Stat3
+JESComponent.21.Type:             Statistical
+
+  # gamma+jet statistical component No. 4
+JESComponent.22.Desc:             gamma+jet statistical uncertainty No. 4
+JESComponent.22.Name:             Gjet_Stat4
+JESComponent.22.Type:             Statistical
+
+  # gamma+jet statistical component No. 5
+JESComponent.23.Desc:             gamma+jet statistical uncertainty No. 5
+JESComponent.23.Name:             Gjet_Stat5
+JESComponent.23.Type:             Statistical
+
+  # gamma+jet statistical component No. 6
+JESComponent.24.Desc:             gamma+jet statistical uncertainty No. 6
+JESComponent.24.Name:             Gjet_Stat6
+JESComponent.24.Type:             Statistical
+
+  # gamma+jet statistical component No. 7
+JESComponent.25.Desc:             gamma+jet statistical uncertainty No. 7
+JESComponent.25.Name:             Gjet_Stat7
+JESComponent.25.Type:             Statistical
+
+  # gamma+jet statistical component No. 8
+JESComponent.26.Desc:             gamma+jet statistical uncertainty No. 8
+JESComponent.26.Name:             Gjet_Stat8
+JESComponent.26.Type:             Statistical
+
+  # gamma+jet statistical component No. 9
+JESComponent.27.Desc:             gamma+jet statistical uncertainty No. 9
+JESComponent.27.Name:             Gjet_Stat9
+JESComponent.27.Type:             Statistical
+
+  # Z+jet statistical component No. 1
+JESComponent.28.Desc:             Z+jet statistical uncertainty No. 1
+JESComponent.28.Name:             Zjet_Stat1
+JESComponent.28.Type:             Statistical
+
+  # Z+jet statistical component No. 2
+JESComponent.29.Desc:             Z+jet statistical uncertainty No. 2
+JESComponent.29.Name:             Zjet_Stat2
+JESComponent.29.Type:             Statistical
+
+  # Z+jet statistical component No. 3
+JESComponent.30.Desc:             Z+jet statistical uncertainty No. 3
+JESComponent.30.Name:             Zjet_Stat3
+JESComponent.30.Type:             Statistical
+
+  # Z+jet statistical component No. 4
+JESComponent.31.Desc:             Z+jet statistical uncertainty No. 4
+JESComponent.31.Name:             Zjet_Stat4
+JESComponent.31.Type:             Statistical
+
+  # Z+jet statistical component No. 5
+JESComponent.32.Desc:             Z+jet statistical uncertainty No. 5
+JESComponent.32.Name:             Zjet_Stat5
+JESComponent.32.Type:             Statistical
+
+  # Z+jet statistical component No. 6
+JESComponent.33.Desc:             Z+jet statistical uncertainty No. 6
+JESComponent.33.Name:             Zjet_Stat6
+JESComponent.33.Type:             Statistical
+
+  # Z+jet statistical component No. 7
+JESComponent.34.Desc:             Z+jet statistical uncertainty No. 7
+JESComponent.34.Name:             Zjet_Stat7
+JESComponent.34.Type:             Statistical
+
+  # Z+jet statistical component No. 8
+JESComponent.35.Desc:             Z+jet statistical uncertainty No. 8
+JESComponent.35.Name:             Zjet_Stat8
+JESComponent.35.Type:             Statistical
+
+  # Z+jet statistical component No. 9
+JESComponent.36.Desc:             Z+jet statistical uncertainty No. 9
+JESComponent.36.Name:             Zjet_Stat9
+JESComponent.36.Type:             Statistical
+
+  # Z+jet statistical component No. 10
+JESComponent.37.Desc:             Z+jet statistical uncertainty No. 10
+JESComponent.37.Name:             Zjet_Stat10
+JESComponent.37.Type:             Statistical
+
+  # MJB statistical component No. 1
+JESComponent.38.Desc:             MJB statistical uncertainty No. 1
+JESComponent.38.Name:             MJB_Stat1
+JESComponent.38.Type:             Statistical
+
+  # MJB statistical component No. 2
+JESComponent.39.Desc:             MJB statistical uncertainty No. 2
+JESComponent.39.Name:             MJB_Stat2
+JESComponent.39.Type:             Statistical
+
+  # MJB statistical component No. 3
+JESComponent.40.Desc:             MJB statistical uncertainty No. 3
+JESComponent.40.Name:             MJB_Stat3
+JESComponent.40.Type:             Statistical
+
+  # MJB statistical component No. 4
+JESComponent.41.Desc:             MJB statistical uncertainty No. 4
+JESComponent.41.Name:             MJB_Stat4
+JESComponent.41.Type:             Statistical
+
+  # MJB statistical component No. 5
+JESComponent.42.Desc:             MJB statistical uncertainty No. 5
+JESComponent.42.Name:             MJB_Stat5
+JESComponent.42.Type:             Statistical
+
+  # MJB statistical component No. 6
+JESComponent.43.Desc:             MJB statistical uncertainty No. 6
+JESComponent.43.Name:             MJB_Stat6
+JESComponent.43.Type:             Statistical
+
+  # MJB statistical component No. 7
+JESComponent.44.Desc:             MJB statistical uncertainty No. 7
+JESComponent.44.Name:             MJB_Stat7
+JESComponent.44.Type:             Statistical
+
+  # MJB statistical component No. 8
+JESComponent.45.Desc:             MJB statistical uncertainty No. 8
+JESComponent.45.Name:             MJB_Stat8
+JESComponent.45.Type:             Statistical
+
+  # MJB statistical component No. 9
+JESComponent.46.Desc:             MJB statistical uncertainty No. 9
+JESComponent.46.Name:             MJB_Stat9
+JESComponent.46.Type:             Statistical
+
+  # MJB statistical component No. 10
+JESComponent.47.Desc:             MJB statistical uncertainty No. 10
+JESComponent.47.Name:             MJB_Stat10
+JESComponent.47.Type:             Statistical
+
+
+##############################################################################
+# 
+#   Special components
+#
+##############################################################################
+
+  # Eta intercalibration: theory uncertainty
+JESComponent.48.Desc:             Eta intercalibration: MC generator modelling uncertainty
+JESComponent.48.Name:             EtaIntercalibration_Modelling
+JESComponent.48.Type:             Modelling
+
+  # Eta intercalibration: total statistical and method uncertainty
+JESComponent.49.Desc:             Eta intercalibration: statistical and method uncertainty
+JESComponent.49.Name:             EtaIntercalibration_StatAndMethod
+JESComponent.49.Type:             Statistical
+
+  # Pileup: Mu term
+JESComponent.50.Desc:             Pileup: Offset, mu term
+JESComponent.50.Name:             Pileup_OffsetMu
+JESComponent.50.Type:             Special
+
+  # Pileup: NPV term
+JESComponent.51.Desc:             Pileup: Offset, NPV term
+JESComponent.51.Name:             Pileup_OffsetNPV
+JESComponent.51.Type:             Special
+
+  # Pileup: pT term (mu part)
+JESComponent.52.Desc:             Pileup: Offset, pT term, mu component
+JESComponent.52.Name:             Pileup_PtTerm_Mu
+JESComponent.52.Type:             Special
+
+  # Pileup: pT term (NPV part)
+JESComponent.53.Desc:             Pileup: Offset, pT term, NPV component
+JESComponent.53.Name:             Pileup_PtTerm_NPV
+JESComponent.53.Type:             Special
+  
+  # Pileup: rho topology
+JESComponent.54.Desc:             Pileup: Rho topology uncertainty
+JESComponent.54.Name:             Pileup_RhoTopology
+JESComponent.54.Type:             Special
+
+ # High pT term
+JESComponent.55.Desc:             High pT term (2012 version)
+JESComponent.55.Name:             SingleParticle_HighPt
+JESComponent.55.Type:             Special
+
+ # Calibration closure
+JESComponent.56.Desc:             Closure of the calibration, relative to MC12a
+JESComponent.56.Name:             RelativeNonClosure_MCTYPE
+JESComponent.56.Type:             Special
+# NOTE: MCTYPE in the name above will be replaced by the MC type used when initiating the provider
+
+
+##############################################################################
+#
+#   Settings for Pile-up uncertainty and calibration version
+#
+##############################################################################
+
+Pileup.MuRef:   16.5
+Pileup.NPVRef:  10.0
+Is2012Moriond:  true
+
+##############################################################################
+

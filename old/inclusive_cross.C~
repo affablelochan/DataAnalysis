@@ -1,0 +1,125 @@
+//this macro is to produce data mc cross section comparison for dr. 
+#include <TROOT.h>
+#include <TFile.h>
+#include <TH2D.h>
+#include <TH1F.h>
+#include <TH1.h>
+#include <TProfile2D.h>
+#include <TStyle.h>
+#include <TCanvas.h>
+#include <TNtuple.h>
+#include <TString.h>
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <TMath>
+
+
+
+
+void inclusive_cross(){
+
+gStyle->SetOptFit(0);
+
+
+TFile* f = new TFile("data-yboostcut-ht-final.root");
+
+//string filename = "/hdfs/users/rsu004/aprilbin/pileupreweight/group.trig-daq.pythia_newbin_pileupreweighting_may7_reweighting_data_mu_scaled.130507193634.merge/group.trig-daq.299582_009329._00085.merge.out.root";
+//TFile* g = new TFile(filename.c_str()); 
+
+
+//final central correction
+//string filename1 = "/hdfs/users/rsu004/aprilbin/pileupreweight/group.trig-daq.pythia_newbin_pileupreweighting_june14_newcentral.130614183620.merge/group.trig-daq.323284_009484._00085.merge.out.root";
+//TFile* gwt = new TFile(filename1.c_str());
+
+TFile *f9 = new TFile("sigma.root" , "recreate");
+
+ float L_AB[]={0, 9.84, 36.28, 594.086, 20340}; 
+  Float_t bins[10] = { 450, 600, 750, 900, 1100, 1400, 1800, 2200, 2700, 4000 };
+   
+          TH1F *h1   = (TH1F*)f->Get("HT");// h1->Sumw2();
+        
+
+
+
+	  //  Double_t bins[13] = {90, 120, 160, 200, 250, 310, 390, 490, 620, 800, 1040, 1400, 2000};
+	  Float_t bins[10] = { 450, 600, 750, 900, 1100, 1400, 1800, 2200, 2700, 4000 };
+         
+          int c=h1->GetXaxis()->GetNbins();
+          cout<<"number of bins "<<c<< endl;
+
+          h11 = new TH1F("h11", " ", c, bins); // for cross-section
+        
+          for(int i=1;i<=c;i++)
+             {
+             double xl = h1->GetBinLowEdge(i);
+             double xh = h1->GetBinLowEdge(i)+h1->GetBinWidth(i);
+             double binsize = xh-xl;
+
+             float bincont = h1->GetBinContent(i);
+             float binwidth = h1->GetBinWidth(i);
+             float error1= h1->GetBinError(i);
+     
+
+	     // this is for different triggers in different pt bins
+	     // he used same triggers for last 5 bins. First 7 bins, he has diferent triggers. (n - 1)
+
+	     
+              int num =c-5;
+
+	      
+            // cout << "the lunprescaled bins start: " <<num <<endl;
+             float Lab=0;
+              if(i >= num){Lab= L_AB[num];}  //true for both "original" and  "bin1" new binning
+          //   if(i>=9){Lab= L_AB[9];}  //for second binning
+             else{Lab= L_AB[i]; }
+             cout <<"lumi al "<<Lab<<endl;
+	     
+
+
+              float newcont = (bincont)/(Lab*binwidth); //newcont = newcont/binwidth; this is dsigma/dht
+              float errorh1 = (error1)/(Lab*binwidth);
+	      
+
+
+	      //    float newcont = (bincont)/(L_AB*binwidth); //newcont = newcont/binwidth; this is dsigma/dht
+	      //  float errorh1 = (error1)/(L_AB*binwidth);
+
+	      //   cout<<"new bin content "<<newcont<< endl;
+              h11->SetBinContent(i,newcont);              h11->SetBinError(i,errorh1);
+           
+	    
+
+             }  //end of loop over bins
+
+
+
+                h11->Draw("E1 x0"); 
+                h11->GetYaxis()->SetTitle("#frac{d#sigma_{incl-jet}}{dH_{T      }} [pb/GeV]");
+                h11->GetXaxis()->SetTitle("H_{T} [GeV]");
+                h11->GetYaxis()->SetNdivisions(503);
+		TFile *f9 = new TFile("sigma.root" , "UPDATE"); 
+              
+gPad->SetLogx();
+gPad->SetLogy();
+gPad->SetGridx(); gPad->SetGridy();
+
+               
+ TLegend *leg = new TLegend(0.2,0.3,0.6,0.55,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextSize(0.05);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(0);
+   //leg->SetFillStyle(1001);
+   //  leg->AddEntry(h11,"Data : detector level","pl");
+   //leg->AddEntry((TObject*)0,"ATLAS work-in-progress","");
+  leg->Draw("esame");
+
+
+  
+
+
+                   }

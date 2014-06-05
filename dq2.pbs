@@ -1,0 +1,78 @@
+#!/bin/bash
+#
+# Batch queue to use
+#PBS -q single
+#
+# Requested number of nodes, cores per node, and wall-clock time (HH:MM:SS)
+#PBS -l nodes=1:ppn=10
+#PBS -l walltime=40:10:00
+#
+# Job email alerts: (b)egin, (e)nd, or (a)borted; uncomment to enable
+##PBS -m bea
+##PBS -M 
+#
+# Name of the job and the standard output/error files (merge with '-j oe')
+# Note: A PBS parameter starting with ## is commented out (disabled).
+#PBS -N ATLAS_Data
+#PBS -j oe
+##PBS -o JOB_NAME.out
+##PBS -e JOB_NAME.err
+
+# NOTE:
+#   o Change QUEUE_NAME and JOB_NAME above
+#   o Set the nodes/cores required and walltime accordingly
+
+# dq2 settings
+
+#DQ2_DATASET='user.mhodgkin.mc12_14TeV.110907.Pythia8_AU2MSTW2008LO_zprime2000_tt.recon.D3PD.e1995_s1581_s1586_r4560/'
+#DQ2_DATASET1='user.cyoung.NTUP_CAL.184104.ParticleGenerator_piplus_06GeV.recon.ESD.e2170_s1599_s1586_r3986.12Oct2013.test.v1/'
+#DQ2_DATASET2='user.cyoung.NTUP_CAL.184105.ParticleGenerator_piplus_1GeV.recon.ESD.e2170_s1599_s1586_r3986.12Oct2013.test.v1/'
+#DQ2_DATASET3='user.cyoung.NTUP_CAL.184106.ParticleGenerator_piplus_5GeV.recon.ESD.e2170_s1599_s1586_r3986.12Oct2013.test.v1/'
+#DQ2_DATASET4='user.cyoung.NTUP_CAL.184107.ParticleGenerator_piplus_8GeV.recon.ESD.e2170_s1599_s1586_r3986.12Oct2013.test.v1/' 
+
+
+
+
+#DQ2_DOWNLOADTO='/hdfs/users/rsu004/aprilbin/upadted/'
+
+# voms settings
+VOMS_SERVER='atlas' 
+VOMS_VALID='80:00' # length of session
+
+# change this to your rucio account name
+export RUCIO_ACCOUNT=subraman
+
+# Change to the directory where the job was submitted
+#cd $PBS_O_WORKDIR
+#cd /hdfs/users/rsu004/aprilbin/pileupreweight/
+cd /hdfs/projects/atlas/djana/
+# Check that HDFS is available
+if [[ ! -d /hdfs/projects/atlas ]]; then
+   echo "HDFS doesn't appear to be mounted! Exiting..."
+   ls /hdfs/projects/atlas
+   exit 1
+fi
+
+# Setup the environment
+shopt -s expand_aliases
+source $ATLAS_LOCAL_ROOT_BASE_SETUP_SH
+localSetupDQ2Client --quiet
+
+# Establish a VOMS proxy connection
+#
+# NOTE: We store our passphrase in ~/.voms,
+#       so we can start a proxy non-interactively.
+#       See `voms-proxy-init --help | grep pwstdin`
+cat ~/.voms | voms-proxy-init -pwstdin -voms $VOMS_SERVER --valid $VOMS_VALID
+
+## Run dq2-get
+#dq2-get "$DQ2_DATASET"
+dq2-get "$DQ2_DATASET1"
+dq2-get "$DQ2_DATASET2"
+dq2-get "$DQ2_DATASET3"
+dq2-get "$DQ2_DATASET4"
+
+
+#dq2-get -H "$DQ2_DOWNLOADTO" "$DQ2_DATASET1"
+#dq2-get  -H /hdfs/projects/atlas/NTUP_SMQCD/ data12_8TeV.00215414.physics_JetTauEtmiss.merge.RAW
+#dq2-get -H /hdfs/projects/atlas/NTUP_SMQCD/ data12_8TeV.00215464.physics_JetTauEtmiss.merge.RAW

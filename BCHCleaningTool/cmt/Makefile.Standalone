@@ -1,0 +1,96 @@
+ifeq ($(wildcard $(ROOTSYS)/test/Makefile.arch),) 
+    include $(ROOTSYS)/etc/Makefile.arch 
+else
+    include $(ROOTSYS)/test/Makefile.arch 
+endif
+
+ROOTBIN := $(shell root-config --bindir)
+ROOTLIB := $(shell root-config --libdir)
+ROOTINC := $(shell root-config --incdir)
+
+# -------------------------------------------------------------
+# General flags
+# -------------------------------------------------------------
+PACKAGE    = BCHCleaningTool
+OUTPUTDIR  = ../StandAlone
+
+# Not allowing ATHENA or the EDM to be built in this case
+CXXFLAGS += -DNO_ATHENA_BUILD
+
+# add utils subdirectories if needed
+# PATCore is for TileTripReader, not us
+INCLUDES   += -I.. -I${ROOTINC} -I../../TileTripReader/ -I../../PATCore/
+
+# Need these to avoid loading dependent libraries when ROOT starts
+LINKLIBS = -L${ROOTLIB} -lHist -lMatrix -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -pthread -lm -ldl -rdynamic -L../../TileTripReader/StandAlone
+
+# -------------------------------------------------------------
+# ROOT Cint
+# -------------------------------------------------------------
+CINT       = BCHCleaningToolCint
+LDEFFILE   = ../Root/LinkDef.h
+CINTFILE   = $(OUTPUTDIR)/BCHCleaningToolCint.cxx
+CINTOBJ    = $(patsubst %.cxx,%.o,$(CINTFILE))
+
+# -------------------------------------------------------------
+# ProofAna source
+# -------------------------------------------------------------
+# add util subdirectories if needed
+CXXLIST = ../Root/BCHCleaningToolBase.cxx ../Root/BCHCleaningToolRoot.cxx $(CINTFILE)
+HLIST   = ../BCHCleaningTool/BCHCleaningToolBase.h ../BCHCleaningTool/BCHCleaningToolRoot.h
+OLIST   = $(patsubst %.cxx,%.o,$(CXXLIST))
+DLIST   = $(patsubst %.h,%.d,$(HLIST))
+
+
+# -------------------------------------------------------------
+# Libraries
+# -------------------------------------------------------------
+LIBFILE  = $(OUTPUTDIR)/libBCHCleaningTool.so
+
+ifeq ($(PLATFORM),macosx)
+EXTRALDFLAGS = -install_name $(LIBFILE)
+endif
+
+# get libraries of ROOT
+define ldlinksuffixROOT
+   $(addsuffix $(LDLINKSUFFIX),$(Lib)) $(shell if [ "$(findstring -Ldlink2,$(OPTIONS))" ]; then echo $(addsuffix _pkgid_$(ROOTVER),$(Lib)); fi)
+endef
+
+# -------------------------------------------------------------
+# Compilation
+# -------------------------------------------------------------
+
+default: $(OUTPUTDIR) shlib
+
+$(OUTPUTDIR):
+	@if ! [ -d $(OUTPUTDIR) ] ; then mkdir $(OUTPUTDIR) ; fi
+
+# Implicit rule to compile all classes
+%.o : %.cxx
+	@echo "Compiling $<"
+	@$(CXX) -MD $(CXXFLAGS) $(INCLUDES) -c $< -o $*.o 
+
+# Rule to make ROOTCINT output file
+$(CINTOBJ) : $(HLIST) $(LDEFFILE)
+	@echo "Running rootcint"
+	@$(ROOTBIN)/rootcint -f $(CINTFILE) -c -p  $(CXXFLAGS) $(INCLUDES) $(HLIST) $(LDEFFILE)
+	@echo "Compiling $(CINTFILE)"
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $(CINTFILE) -o $@
+
+rootcint : $(HLIST) $(LDEFFILE)
+	@echo "Running rootcint"
+	$(ROOTBIN)/rootcint -f $(CINTFILE) -c -p  $(CXXFLAGS) $(INCLUDES) $(HLIST) $(LDEFFILE)
+
+# Rule to combine objects into a shared library
+$(LIBFILE): $(OLIST)
+	@echo "Linking $(LIBFILE)"
+	@rm -f $(LIBFILE)
+	@$(LD) $(CXXFLAGS) $(SOFLAGS) $(LINKLIBS) $(EXTRALDFLAGS) $(OLIST) -o $(LIBFILE) 
+
+-include $(DLIST)
+
+BCHCleaningToolCint: $(CINTOBJ)
+shlib: $(LIBFILE)
+
+clean:
+	@rm -f ../*/*.o ../*/*.d

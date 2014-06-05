@@ -1,0 +1,99 @@
+
+#######################################
+#
+#  JESProvider Input Settings
+#    Reduced set of nuisance parameters from final 2011 iteration of the in-situ JES
+#    Reduction was applied within each category
+#    November 13, 2012
+#
+#
+#######################################
+
+JESUncertaintyRootFile:       JES_2011/Final/JESUncertainty_StrongerCorrelations_2011.root
+
+#######################################
+#
+#   Settings for JES Components
+#
+#######################################
+
+JESComponent.1.Desc:            Effective JES Statistical and Method Component 1
+JESComponent.1.Name:            EffectiveNP_Statistical1
+JESComponent.1.Type:            Statistical
+
+JESComponent.2.Desc:            Effective JES Statistical and Method Component 2
+JESComponent.2.Name:            EffectiveNP_Statistical2
+JESComponent.2.Type:            Statistical
+
+JESComponent.3.Desc:            Effective JES Statistical and Method Component 3
+JESComponent.3.Name:            EffectiveNP_Statistical3
+JESComponent.3.Type:            Statistical
+
+JESComponent.4.Desc:            Effective JES Modelling Component 1
+JESComponent.4.Name:            EffectiveNP_Modelling1
+JESComponent.4.Type:            Modelling
+
+JESComponent.5.Desc:            Effective JES Modelling Component 2
+JESComponent.5.Name:            EffectiveNP_Modelling2
+JESComponent.5.Type:            Modelling
+
+JESComponent.6.Desc:            Effective JES Modelling Component 3
+JESComponent.6.Name:            EffectiveNP_Modelling3
+JESComponent.6.Type:            Modelling
+
+JESComponent.7.Desc:            Effective JES Detector Component 1
+JESComponent.7.Name:            EffectiveNP_Detector1
+JESComponent.7.Type:            Detector
+
+JESComponent.8.Desc:            Effective JES Detector Component 2
+JESComponent.8.Name:            EffectiveNP_Detector2
+JESComponent.8.Type:            Detector
+
+JESComponent.9.Desc:            Effective JES Mixed Modelling and Detector Component 1
+JESComponent.9.Name:            EffectiveNP_Mixed1
+JESComponent.9.Type:            Mixed
+
+JESComponent.10.Desc:            Effective JES Mixed Modelling and Detector Component 2
+JESComponent.10.Name:            EffectiveNP_Mixed2
+JESComponent.10.Type:            Mixed
+
+
+#######################################
+
+JESComponent.11.Desc:          Correlated MC for Z/g-jet and MJB ISR/FSR+Fragmentation 
+JESComponent.11.Name:          Correlated_MC-MJB
+JESComponent.11.Type:          Special
+JESComponent.11.CorrSubComponents: Zjet_MC MPF_Generator MJB_ISRFSR MJB_Fragmentation
+
+JESComponent.12.Desc:           Eta intercalibration: stat uncertainties
+JESComponent.12.Name:           EtaIntercalibration_TotalStat
+JESComponent.12.Type:           Statistical
+
+JESComponent.13.Desc:           Eta intercalibration: MC generator modelling uncertainty
+JESComponent.13.Name:           EtaIntercalibration_Modelling
+JESComponent.13.Type:           Modelling
+
+JESComponent.14.Desc:           Pileup: Offset, mu term
+JESComponent.14.Name:           Pileup_OffsetMu
+JESComponent.14.Type:           Special
+
+JESComponent.15.Desc:           Pileup: Offset, NPV term
+JESComponent.15.Name:           Pileup_OffsetNPV
+JESComponent.15.Type:           Special
+
+JESComponent.16.Desc:           High Pt term (temporary, 2010 uncertainty)
+JESComponent.16.Name:           SingleParticle_HighPt
+JESComponent.16.Type:           Special
+
+JESComponent.17.Desc:           Closure of the calibration, relative to MC11b
+JESComponent.17.Name:           RelativeNonClosure_MCTYPE
+JESComponent.17.Type:           Special
+
+
+#######################################
+
+# Settings for pile-up uncertainty
+Pileup.MuRef:   8.5
+Pileup.NPVRef:  6.0
+#
+#######################################

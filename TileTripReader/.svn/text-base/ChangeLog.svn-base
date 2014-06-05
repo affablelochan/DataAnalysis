@@ -1,0 +1,106 @@
+2013-10-31 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-19
+	* Changed the behavior in TTileTripReader::getEtaPhi() that cleared the list of trips in memory, m_current trips,
+	  when passed a run not contained in the trip list.  Previously, this would cause changing from good run A to 
+	  bad run B then back to good run A to clear the trip list and always return false.
+
+2013-10-14 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-18
+	* Fixing Coverity warnings
+
+2013-09-23 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-17
+	* Added interface options to retrieve the ROOT TTileTripReader tool from the Athena interface
+
+2013-09-10 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-16
+	* Updated AthTileTripReader.h and requirements file to account for the move of IUserDataCalcToo.h to
+	  the PATCore package
+
+2013-08-20 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-15
+	* Added new control method that affects ONLY checkEtaPhi()
+	  m_LBOffsets is a public TripRegion struct that can be used to expand the size of each long barrel trip
+	  region.  All trip regions have their edges EXPANDED by the values set in m_LBOffsets.  Similarly,
+	  m_EBOffsets affects extended barrel trip regions.
+	* Instead of checking the interior of a box, now using a deltaPhi value to check proximity.  Corrects errors for
+	  regions near pi and -pi.  Methods changed:
+	  areaTripFraction()
+	  checkEtaPhi()
+	  checkExtendedEtaPhi()
+
+2013-08-19 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-14
+	* Added new method  TTileTripReader::checkExtendedEtaPhi(int run,int lbn,double eta,double phi,double delEta,double delPhi)
+
+
+2013-07-08 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-13
+	* Fixed logic bug introduced in fixing the last bug in TTileTripReader::getEtaPhi()
+
+2013-07-03 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-12
+	* Fixed bug in TTileTripReader::getEtaPhi() that caused duplicate TripRegions to appear
+	* Removed the vector<TripRegion> copy created in TTileTripReader::getEtaPhi()
+
+2013-07-01 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-11
+	* Fixed bug in TTileTripReader::getEtaPhi() causing generation of new list every time
+	* Fixed bug in TTileTripReader::readTileFlags() causing DCS trip list to be overwritten
+	* Added tileFlags tracking in TTileTripReader so TripRegions are only constructed if
+	  the tileFlags change.  If tileError==0 the tileFlags TripRegions are cleared (they
+	  no longer persist for an entire lumiblock)
+
+2013-06-14 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-10
+	* Added new method TTileTripReader::readTileFlags(int run, int lbn, int tileError, int tileFlags)
+	* Modified methods TTileTripReader::accept() and TTileTripReader::calculate() methods to take tileError and tileFlags input
+	* Modified methods AthTileTripReader::accept() and AthTileTripReader::calculate() to call tileError and tileFlags from EventInfo
+
+2013-04-24 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-09
+	* Changed standalone variable from __STANDALONE__ to ROOTCORE
+
+2013-04-17 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-08
+	* Removed PATCore from PACKAGE_DEP in Makefile.RootCore
+	* Added -D__STANDALONE__ to PACKAGE_CXXFLAGS in Makefile.RootCore
+
+2013-04-05 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-07
+	* Added PATCore to PACKAGE_DEP in Makefile.RootCore
+
+2013-03-27 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-06
+	* Added the ability to pass a NULL pointer in AthTileTripReader::accept() to only fill
+	  the "BadEvent" cut.
+
+2013-03-26 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-05
+	* Added AthTileTripReader::checkEvent() method
+	* In TTileTripReader.cxx changed try/catch check to std::map::find() check for speed
+	* Updated default file to CompleteTripList_2011-2012.root
+
+2013-03-04 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-04
+	* Added precompiler flag __STANDALONE__ to TTileTripReader
+	* Repaired Makefile.Standalone to use new flag
+	* Standalone version of TTileTripReader looses PATCore access
+	accept() and calculate() methods are disabled
+
+2013-02-26 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-03
+	* Improved comments in TTileTripReader.h
+	* Added complete trip file CompleteTripList_2011-2012.root
+
+2013-02-22 Stephen Cole <Stephen.Cole@cern.ch>
+	* Tagging TileTripReader-00-00-02
+	* Added checkEvent() method for ID'ing bad tile cal events
+	* Commented usage of buildOffsets() when RunMap.Run and TripList.Run values don't match
+	* Added "BadEvent" cut to returned TAccept for checkEvent()
+	* Added usage of new TTileTripReader methods to AthTileTripReader
+	* Changed verbosity setting to use Athena MSG::Level
+
+2012-09-18 Stephen Cole <Stephen.Cole@cern.ch>
+	* New package TileTripReader
+	* Tagging TileTripReader-00-00-01

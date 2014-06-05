@@ -1,0 +1,100 @@
+2014-03-25 S. Schramm : trunk and BCHCleaningTool-00-00-07
+        * Added PathResolver to make Athena initialization simpler
+        * Tagging BCHCleaningTool-00-00-07
+
+2014-03-24 S. Schramm : trunk and BCHCleaningTool-00-00-06
+        * More standalone makefile fixes
+        * Switched athena lib to dual_use rather than component_library
+        * Tagging BCHCleaningTool-00-00-06
+
+2014-03-24 S. Schramm : trunk and BCHCleaningTool-00-00-05
+        * Updated TestBCH.* to be truly private
+        * Fixes dependency of PRW for packages using ours
+        * Tagging BCHCleaningTool-00-00-05
+
+2014-03-24 S. Schramm : trunk and BCHCleaningTool-00-00-04
+        * Updated Makefile.Standalone
+        * Tagging BCHCleaingTool-00-00-04
+
+2014-03-06 S. Schramm : trunk and BCHCleaningTool-00-00-03
+        * Expanded input file path checker to include more locations
+        * Tagging BCHCleaningTool-00-00-03
+
+2014-02-24 S. Schramm, C. Doglioni : trunk
+        * Changes by Caterina for emulating fEM/BCH cuts in MC
+        * File path now checks several options
+        * Removed JetAnalysisEDM dependency due to xAOD and incompatibility with TopRootCore
+        * Tagging BCHCleaningTool-00-00-02
+
+2013-12-23 S. Schramm : trunk
+        * In a previous commit, Caterina added IsBadLoose/Medium/TightDeltaPhiJetMET
+        * Tagging BCHCleaningTool-00-00-01
+
+2013-12-19 S. Schramm : trunk
+        * Added three types of cuts for testing (not yet recommended):
+            - IsBadLooseBCH:  Fixed cuts in edge, pt-dependent cut in core
+            - IsBadMediumBCH: Fixed cuts in edge, kill core
+            - IsBadTightBCH:  Kill edge and core
+
+2013-10-30 S. Schramm : trunk
+        * Removed PRW dependency
+        * User must now pass in random run/lbn for MC (we don't do it for them)
+        * Removed BCH response approximation
+        * Still development - don't use this revision yet
+
+2013-10-15 S. Schramm : trunk
+        * Removed TAccept/TSelector interface support
+        * Cleaned up code
+
+2013-10-10 S. Schramm : trunk
+        * Added fatal for when PRW fails to get a random run number
+        * Now tells user to check their configuration of the PRW tool
+
+2013-09-15 S. Schramm : trunk
+        * Added mu dependence when calling PRW's GetRandomRunNumber()
+
+2013-09-14 S. Schramm, C. Doglioni : trunk
+        * More athena-related updates
+        * Could not find a way to get TPileupReweighting to work in athena fashion
+        * Instead, require users to pass a pointer - not ideal
+        * More work on preliminary athena tests
+        * Change to BCH tool to also take mu for weighting random run number
+        * Added python module for configuring athena tool properties (currently disabled)
+
+2013-09-08  S. Schramm : trunk
+        * Many athena-related updates
+        * Preliminary athena validation test suite (in progress)
+        * Currently no actual tests, but the framework is now in place and runs successfully
+
+2013-09-06  S. Schramm : trunk
+        * Updates for athena validation - still in progress
+
+2013-08-30  S. Schramm, C. Doglioni : trunk
+        * Lots of changes by Caterina while I was away, not detailed here
+        * Updates to Athena interface to bring in line with Root interface
+        * Small bug fixes for boundary checking
+        * Changed MC to use PRW random run number when available
+        * Fixed bug with EBC01 run number when not using PRW
+
+2013-08-12  S. Schramm, C. Doglioni : trunk
+        * Numerous bug fixes
+        * Now have some MC functionality (thanks to Caterina)
+        * Cleaned up code
+        * Added Terminate() and Warning() for error checking (for both athena and root)
+        * Preliminary version in place - time for more rigorous checks
+        * Added more overloaded options
+
+2013-08-11  S. Schramm, C. Doglioni : trunk
+        * Now successfully compiles in both athena and RootCore
+        * Still does not yet have MC functionality - to be added
+
+2013-08-11  S. Schramm : trunk
+        * Creation of a basic semi-hacked skeleton
+        * Currently there is no actual functionality for MC - to be added
+        * Tested for compilation on athena, not yet RootCore
+        * Lots to do - this is for developers only!
+        * Added preliminary LinkDef for RootCore
+
+2013-08-09  S. Schramm : trunk
+        * Creation of basic package structure
+

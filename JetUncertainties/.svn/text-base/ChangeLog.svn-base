@@ -1,0 +1,321 @@
+2010-07-21  Pier-Olivier DeViveiros < viveiros AT physics.utoronto.ca >
+	* First Commit with a preliminary version
+2010-07-22  Caterina Doglioni < caterina.doglioni AT cern.ch >
+	* First commit of number of vertices-dependent uncertainty	
+2010-07-28  Caterina Doglioni < caterina.doglioni AT cern.ch >
+	* Test of ATHENA version (with PathResolver), added init() function
+2010-08-03  Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-01-00
+	* Uncertainty provided up to |eta| < 4.5, down to 15 GeV
+2010-08-04  Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-01-01
+        * Bugfix for collection names, pileup plots (wrongly shifted in x axis)
+2010-08-04  Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-01-02
+        * Correct ROOT file that fixes bug in pileup plots (wrongly shifted in x axis)
+2010-12-10  Stefanie Adomeit < stefanie.adomeit AT cern.ch > - JetUncertainties-00-01-03
+        * Added MultijetJESUncertaintyProvider class
+2011-02-08 Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-01-04
+        * Copy of 00-01-03 tag, fixed CMT bug
+2011-02-11 Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-02-00
+        * Tag for release 15 uncertainties
+2011-03-24 Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-03-00
+        * Preparing for release 16 uncertainties, added Multijet ATHENA version
+2011-03-29 Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-03-01
+        * Fixed bug in input file reading for standalone version
+2011-04-16 Caterina Doglioni < caterina.doglioni AT cern.ch >
+        * Test version of PROOF-compatible provider (Bart Butler)
+2011-04-19 Stefanie Adomeit < stefanie.adomeit AT cern.ch > 
+        * Update on close-by jets uncertainty
+	* Removed release 15 analysis input files from analysisPlots/
+	* Updated analysis histogram titles in warning/error messages (MultijetJESUncertaintyProvider.cxx) to rel. 16 conventions
+2011-04-20 Stefanie Adomeit < stefanie.adomeit AT cern.ch > 
+	* Added example input files to analysisPlots/
+2011-04-20 Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-03-02
+        * CINT Standalone loading problems fixed (thanks to Bart Butler)   
+2011-04-27 Caterina Doglioni < caterina.doglioni AT cern.ch > - JetUncertainties-00-03-03
+        * Analysis files for Multijet now copied to share directory by default    
+2011-04-28 Stefanie Adomeit < stefanie.adomeit AT cern.ch > - JetUncertainties-00-03-03-branch 
+        * Added TopoGCW/LCTopo collections to MultijetJESUncertaintyProvider  
+2011-05-28 Stefanie Adomeit < caterina.doglioni AT cern.ch > - on JetUncertainties-00-03-03-branch 
+        * Added TopoGCW/LCTopo collections to JESUncertaintyProvider/python  
+2011-06-09 Caterina Doglioni < caterina.doglioni AT cern.ch > - on JetUncertainties-00-03-03-branch 
+        * Preparing LC/GCW Provider for tag 00-03-04
+2011-08-09 Caterina Doglioni < caterina.doglioni AT cern.ch > - on trunk
+        * Merged 00-03-03-branch with trunk
+2011-08-09 Caterina Doglioni < caterina.doglioni AT cern.ch > - on trunk
+        * RootCore version (still needs some testing)
+        * Actually adding directories and cleaning up old files
+2011-08-11 Caterina Doglioni < caterina.doglioni AT cern.ch > - on trunk
+        * Standalone RootCore version of JESUncertaintyProvider tested
+        * Updated JetUncertainty.root file with smooth intercalibration uncertainty/bugfix for eta intercalibration and dead material
+2011-08-12 Stefanie Adomeit < stefanie.adomeit AT cern.ch >  - on trunk
+        * moving MJES uncertainty plots to separate input file
+2011-08-12 Caterina Doglioni < caterina.doglioni AT cern.ch >  - on trunk
+        * changed to printf-style for message logging (thanks Attila) 
+        * Left to do: only JESUncertaintyProvider plots in JetUncertainties.root file, doublecheck in-situ intercalibration 
+2011-08-13 Caterina Doglioni < caterina.doglioni AT cern.ch >  - on trunk
+        * Only JESUncertaintyProvider plots in JetUncertainties.root file, smooth in-situ intercalibration 
+2011-08-13 Caterina Doglioni < caterina.doglioni AT cern.ch >  - JetUncertainties-00-03-05  
+        * Differences from previous tag: 
+          - RootCore structure
+          - Bugfixes for intercalibration and calorimeter uncertainty (impact: <1% endcap/forward,<0.5% central)
+          - two different input files for JES and MultijetJES 
+          - smooth in-situ intercalibration 
+          - printf-style logging to avoid compiler warnings
+2011-11-14  Caterina Doglioni < caterina.doglioni AT cern.ch >  - JetUncertainties-00-03-05-branch
+       * 2011 Pile-up uncertainty, RootCore version   
+2011-11-15  Caterina Doglioni < caterina.doglioni AT cern.ch >  - JetUncertainties-00-03-05-branch
+       * Removed non-working python version
+       * Preparing for tag to be inserted in R17.5.0
+2012-02-08  Caterina Doglioni < caterina.doglioni AT cern.ch >  - JetUncertainties-00-03-07
+       * Added pileup uncertainties for LC jets
+       * Makefile.Standalone restored
+2012-02-08  Caterina Doglioni < caterina.doglioni AT cern.ch >  - trunk
+      * Merged previous tag with trunk, starting R17 pileup uncertainty implementation
+2012-03-11  Caterina Doglioni < caterina.doglioni AT cern.ch >  - trunk
+       * Starting point for R17 development: MPF+Z/jets combination, read in by config file
+       * IMPORTANT NOTE: the MultijetJESProvider is left out of the compilation as it is broken by the changes
+       * To reinclude it, modify the Makefile.Standalone and JetUncertainties/LinkDef.h:
+			 * wherever there is JESUncertaintyProvider add MultijetJESUncertaintyProvider as well
+2012-03-19  Caterina Doglioni < caterina.doglioni AT cern.ch >  - trunk
+       * (Stefanie, previous revision): Adapted MultijetJESProvider
+       * Reincluded MultijetJESProvider in Makefile.Standalone
+       * FindBin is now called for each nuisance parameter to allow for histos with different binning to be handled correctly - needs speed tests 
+		   * Added scripts to produce standard JESUncertainty plots (in testingMacros)
+2012-03-20  Caterina Doglioni < caterina.doglioni AT cern.ch >  - trunk
+       * Added pile-up and high pT plots (2010 only)
+2012-03-24  Caterina Doglioni < caterina.doglioni AT cern.ch >  - trunk
+       * Modification to requirements file for R17.2
+       * First attempt at caching (needs to be refined)
+       * Added final combination by Bogdan (MPF/Zjet/MJB)
+       * Bugfix in doublecounting of stat uncertainties fixed (thanks Dag)
+2012-03-25  Caterina Doglioni < caterina.doglioni AT cern.ch >  - trunk
+       * Added absolute non-closure (thanks Dag)
+       * Linear addition of components active and tested (Bugfix for adding in quadrature/linearly)
+2012-03-25  Caterina Doglioni < caterina.doglioni AT cern.ch >  - trunk
+       * Absolute value of uncertainties taken (non-closure input is asymmetric and possibly negative) 
+       * Formatting macros ready for comparison
+2012-03-28  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-04-00
+	* Major restructuring of the code:
+	* Construcors now take an extra argument: MCtype
+	* Many method names changned and obsolete/unnecessary methods removed
+	* Internal changes to the code, uncertaintiy components in vector not map. Code now more efficient.
+	* Uncertainty input updated, (large) flavor respone compoent added
+	* Athena code updated to handle new format (not tested)
+2012-03-29  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-04-01
+        * Fixed compilation warnings for string->TString
+2012-03-29  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-04-02
+        * New implementation of flavor response uncertainty: moved from JES provider to MuliJES provider
+2012-03-30  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-00
+        * Fixed small bug in the (new) implementation of multiJES flavor composition uncertainty method.
+	* Protection against division with zero and relative error larger than 100%
+2012-03-30  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-01
+        * Makefile.Standalone includes MultijetJESProvider as well
+2012-04-05  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-02
+        * Another fix of Makefile.Standalone: now use correct Linkdef.h
+2012-04-17  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-03
+      * Added reduced nuisance parameter configurations from Bogdan
+2012-04-26  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-06
+      * Added "April 26" configurations that exclude multijet. To be used togehter with ApplyJetCalibration-00-01-XX
+	that also exclude multijet (calibration frozen at pT=600 GeV)
+2012-05-07  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-07
+      * Finalised configurations that exclude multijet. To be used together with ApplyJetCalibration-00-01-03
+	that also exclude multijet (calibration frozen at pT=600 GeV)
+      * Updated Eta intercalibration modeling to be symmetric
+      * Added MJESBalance components from 2011: closeby, flavor response, flavor composition, bJES
+2012-05-14  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-08
+      * Finalised configurations including multijet. To be used together with ApplyJetCalibration-00-01-05 (Smooth3)
+2012-05-14  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-09
+      * Finalised configurations including multijet, harder smoothing at high pT. To be used together with ApplyJetCalibration-00-01-06 (Smooth1)
+2012-05-15  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-09-01
+      * For release 17.6, removed ATHENA classes for the time being (will be fixed in the next tag)
+2012-05-15  C. Doglioni & Dag Gillberg & TJ Khoo < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-09-02
+      * For release 17.6, removed ATHENA classes for the time being, fixed compilation warnings
+2012-05-19  C. Doglioni & Dag Gillberg & TJ Khoo < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-10
+      * Fixed full nuisance parameter configuration
+      * Fully removed ATHENA classes for the time being
+2012-05-19  C. Doglioni & Dag Gillberg & TJ Khoo < dag.gillberg AT cern.ch > - trunk and JetUncertainties-00-05-11
+      * Changed title of nuisance parameter MJB_JJCB (nothing changed in terms of uncertainties)
+      * Fixed m_GeV in error message for close-by jets (P. Giovannini)
+      * Made caching histograms PROOF/multiple-instance compatible (B. Allbrook, S. Head)
+2012-05-31  C. Doglioni & Dag Gillberg < dag.gillberg AT cern.ch > - JetUncertainties-00-06-00-branch
+      * Preliminary 2012 uncertainty
+2012-06-09 D. Gillberg < dag.gillberg AT cern.ch >: JetUncertainties-00-06-00-02 and JetUncertainties-00-06-01
+      * Additional argument for path to setting and root input files in constructor
+2012-08-20 C. Doglioni, S. Schramm, J. Taenzer < caterina.doglioni AT cern.ch >: trunk
+      * Renamed MJES input file (transparent)
+2012-09-13 C. Doglioni, S. Schramm, J. Taenzer < caterina.doglioni AT cern.ch >: trunk
+      * Ported 2012 input files and checked they worked (except for Top2012 one :( )
+      * Checked path mechanism
+      * TDirectory fix so current dir is not changed
+2012-09-13 S. Schramm < caterina.doglioni AT cern.ch >: trunk
+      * Fixed an outside of eta range interpolation bug in the Multijet JES provider
+2012-09-13 C. Doglioni, J. Taenzer < caterina.doglioni AT cern.ch >: trunk
+      * Changed to simplified treatment of flavour composition uncertainty, left old one as _deprecated
+2012-09-18 S. Schramm < steven.schramm AT cern.ch >: trunk
+      * Switched the Multijet JES provider to use interpolation for getValue()
+2012-09-18 C. Doglioni, S. Schramm, J. Katzy < steven.schramm AT cern.ch >: trunk
+      * Added NJets-dependent uncertainty
+      * Removed _deprecated function to avoid dependence on presence of R_incl histograms
+      * Added testing macros  
+2012-09-20 S. Schramm, D. Gillberg, C. Doglioni < steven.schramm AT cern.ch >: trunk
+      * Added JESUtils functions (in the JESUtils namespace), more will follow in the future
+      * Modified Makefile.Standalone to include this new file in the JES library
+      * Tested RootCore version and no changes to the Makefile were observed to be necessary
+      * Changed the JESProvider to use some of the JESUtils functions
+      * Significant rewrite of CompareCorrelations to allow for pt or eta correlation comparisons
+      * Added a script which automates the Reduction, combination of root files, config file creation, and correlation comparison process
+2012-09-20 S. Schramm, D. Gillberg, C. Doglioni < steven.schramm AT cern.ch >: trunk
+      * Added a file called by the reduction/combination/correlation script (forgot to include the python file that makes root/config files after reduction)
+2012-09-21 S. Schramm < steven.schramm AT cern.ch >: trunk
+      * Added various config and root files supporting alternative correlations (both with all parameters and reduced sets)
+2012-09-28 C. Doglioni < caterina.doglioni AT cern.ch > : trunk
+      * Added top-specific preliminary files (in separate directory)
+      * Fixed out of range problem in closeby uncertainty
+2012-09-30 D. Gillberg, C. Doglioni, J. Taenzer : trunk and JetUncertainties-00-07-00
+	* Final 2011 insiu JES uncertainties with adjusted MJB input
+	* Restructured share folder, now has JES_2011 and JES_2012 subfolders
+	* Reoganized testingMacros folder
+	* New macor in testingMacros/ that plots all uncertainties for a given config files
+	  ./run/plot_all_JES_uncertainties.sh
+        * Removed two dangerous, rarely used methods that previously could cause conflit
+	  getRelUncert(pt,eta,NPV,mu)
+	* Cleaned up the warning messages
+	* Configuration files for the 7 2012 JES subcomponents as agreed on with HSG7
+	* Path to the JES input folder can now be specified in the constructor
+	* Added support for Njet dependent flavour uncertainties
+2012-10-01 D. Gillberg, C. Doglioni, J. Taenzer : JetUncertainties-00-07-01
+	* Fix for closeby uncertainty - many warning messages given for R=0.6
+	  Thanks to Chris Meyer for reporting this.
+2012-10-04 D. Gillberg, C. Doglioni, J. Taenzer : JetUncertainties-00-07-02
+	* Removed a spurious ; in JESUtil.h that was causing an athena compile failure.
+	* Fixed a few error messages in JESUtils.cxx that were using the wrong printf placeholder for floats (%lf instead of %f) causing some warnings during compile.
+       	  Thanks to Carl Gwilliam for reporting these issues.
+2012-10-17 S. Schramm, C. Doglioni, PA Delsart : trunk 
+	* Updated the requirements file to remove a package that is no longer required
+2012-10-18 S. Schramm : trunk and JetUncertainties-00-07-03
+	* Fixed a bug in MultijetJESUncertaintyProvider's getRelFlavorCompUncert (added nJet to gluonFraction)
+	* Cast some variables to void which are in empty methods (return 0.0 as only line) in the UJet provider, thus removing compiler warnings
+        * Created new tag (also including requirements file from past commit) for submission to Release 18 testing
+2012-10-18 S. Schramm : trunk and JetUncertainties-00-07-04
+	* Fixed another bug in MultijetJESUncertaintyProvider's getRelFlavorCompUncert (added nJets to gluonFractionError)
+2012-10-26 S. Schramm : trunk
+	* Re-added the original 2012 JESUncertainty root file so comparisons can be made between FirstData and Sept2012 versions
+        * Also modified the relevant config files to work with the relevant root file
+2012-11-01 S. Schramm : trunk and JetUncertainties-00-07-05
+	* Added automated support for the standard athena path ($TestArea/Reconstruction/Jet/JetUncertainties/share/)
+        * Added categories to each nuisance parameter (statistical/method, detector, modelling, mixed detector/modelling, and special)
+        * Added support for categories to the JES provider (support for the MultiJES will follow, for now it is simply ignored)
+        * Added alternative correlation scenarios (InsituJES2011_StrongerCorrelations.config and InsituJES2011_WeakerCorrelations.config)
+        * Modified reduction scripts to support reduction by category (config and root files will follow after naming conventions are agreed upon, but they now exist)
+2012-11-02 S. Schramm : trunk
+	* Fixed some small memory leaks in the JES and MultijetJES providers (pointed out by Simon Head)
+2012-11-03 S. Schramm : trunk
+	* Fixed some small initializtion problems in deprecated methods (pointed out by Coverity)
+2012-11-04 S. Schramm : trunk
+	* Added category reduction configuration files for all three scenarios
+        * Added global reduction configuration files for the stronger and weaker scenarios
+        * Split all of the parameters into three root files, depending on the scenario
+        * Updated reduction interface code and associated scripts
+2012-11-13 S. Schramm, B. Malaescu, C. Doglioni, D. Gillberg : trunk
+	* Re-ran the reduction for all scenarios after much discussion with the above listed people
+        * Reduction is run between 17 GeV and 1 TeV
+        * Then, this is held constant down to 15 GeV and up to 2.5 TeV
+        * Global reduction uses 983 1-GeV bins (then put in standard 100 log bin JES histo)
+        * Category reduction uses 983 log-sized bins (then put in standard 100 log bin JES histo)
+        * Also added many new scripts relating to creating reduction validation plots
+2012-11-20 S. Schramm, B. Malaescu, C. Doglioni, D. Gillberg : trunk
+        * In view of the large eta correlation differences when considering eta intercalibration as one vs two parameters:
+        *   Removed all reduced config files (except 11NP for backwards support, but it will no longer be recommended)
+        *   Added new reduced config files where the two eta intercalibration parameters are split (so 11NP is now 12NP, for example)
+        *   These new config files are what will be recommended for use
+        *   Hopefully we will get back to 11NP and the like by implementing a 2D reduction method in the future
+        * Also changed the provider's binning checking method to only require the same phase space coverage (not identical bins)
+2012-11-20 S. Schramm : JetUncertainties-00-07-06
+        * Global reductions added for alternative correlations (StrongerCorrelations and WeakerCorrelations)
+        * Category reductions added for all scenarios (normal, stronger, and weaker)
+        * EtaIntercalibration has been split from a single component to two components, in order to better represent eta correlations
+        * Other smaller tweaks have been made (see previous entries between the 00-07-05 tag and this tag)
+2012-11-20 S. Schramm, C. Doglioni : trunk and JetUncertainties-00-07-07
+        * Changed the analysis root file path for the top-specific multijet config file
+2012-11-20 S. Schramm : trunk 
+        * Added an error message (rather than using a default) for when users provide a config file which does not specify an associated JES root file
+2013-01-07 S. Schramm : trunk 
+        * Updated an error message to force unsigned values (for architecutres where size_t and unsigned are not the same)
+        * Some additions and minor changes to JESUtils (clearer names, for example)
+2013-01-20 S. Schramm : trunk 
+        * Added hasWellKnownCorrelations() method for JESUncertaintyProvider (recommendation on whether or not to profile on a parameter)
+        * Many changes to support new 2012 insitu components (and backwards compatible with both 2011 and 2012 HCP)
+        * Works on quick tests with 2011 configs/root files, but NOT for release yet!  Still needs more validation
+        * New 2012 config/root files not yet added
+        * Significantly rearranged JESUncertaintyProvider.* files to make more readable and to group similar methods
+        * Again, THIS IS NOT FOR USE BY NON-EXPERTS!  Intermediate commit for joint testing purposes!
+2013-01-20 S. Schramm : trunk 
+        * Added flag for distinguishing new 2012 insitu version (m_is2012Moriond), necessary for backwards compatibility
+2013-01-20 C. Doglioni : trunk 
+        * Added infrastructure for 2012 Closeby
+2013-01-21 S. Schramm : trunk
+        * Major restructuring including Moriond2013 recommendations for 8 TeV data
+        * Updated provider to include new Moriond2013 variables while supporting backward compatibility
+        * Changed 2012 directory structure to mimick 2011, share/JES_2012/HCP2012 and share/JES_2012/Moriond2013
+        * New Moriond2013 folder has many changes to the components, and has a corresponding 15NP reduction
+        * Moriond2013 In-situ uncertainties in $SVNPERF/CombPerf/JetETMiss/JetUncertaintyTools/InsituCombination_2012dataset
+        * Still not a tag yet - validation will happen shortly, then a tag will be made, but this is intended to be stable
+2013-01-21 C. Doglioni : trunk
+        * Fixes in dir for HCP config files 
+2013-01-21 S. Schramm : trunk
+        * Added extra check to hasWellKnownCorrelations()
+2013-01-21 S. Schramm : trunk
+        * Switched the rho topology term from being a normal component to a special pileup component
+2013-01-21 S. Schramm : trunk
+        * Changed Moriond2013 config file to note that the high pT term is the new 2012 one, not the old 2010 one
+2013-01-21 S. Schramm : trunk
+        * Added more checks to hasWellKnownCorrelations()
+2013-01-21 S. Schramm : trunk
+        * Added a category reduction for the new insitu (InsituJES2012_20NP_ByCategory.config)
+        * Modified some comments in the other config files
+        * Updated the root file to contain the category reduction components
+2013-01-21 S. Schramm : trunk
+        * Updated dijet eta intercalibration components in the Moriond2013 root file
+2013-01-21 S. Schramm : trunk
+        * Re-ran both global and category reductions following change in Zjet_Extrapolation for LC4 and change of eta intercalibration
+        * The category reduction went from 20NP to 21NP
+        * Hopefully final version for Moriond is now being committed, validation to follow
+2013-01-21 S. Schramm, C. Doglioni, D. Gillberg : trunk and JetUncertainties-00-08-00
+        * New branch for 2012 insitu calibration uncertainties
+        * 2011 datasets remain unchanged from the previous tag
+        * 2012 now has two directories under share/JES_2012   (HCP2012 and Moriond2013)
+        * HCP2012 is unchanged from what was used up until this point for 2012 datasets
+        * Moriond2013 is the new recommendation for the full 2012 dataset with the new insitu calibration
+2013-01-21 S. Schramm : trunk and JetUncertainties-00-08-01
+        * Adjusted Zjet_Extrapolation for LC6 in addition to LC4
+        * As a result, re-did reductions
+        * Changed reduction config file names to actually match the number of NPs instead of being one off
+2013-02-02 S. Schramm : trunk
+        * Removed double allocation of gluon fraction uncertainty histogram (memory leak)
+        * Added better boundary control for multijet components (>= instead of >)
+2013-02-04 S. Schramm : JetUncertainties-00-08-02
+        * Making a tag of the fix for multijet boundary control committed two days ago
+2013-02-14 S. Schramm, A. Davison : trunk and JetUncertainties-00-08-03
+        * Added latest updates to UnusualJetUncertaintyProvider and new 2012 uncertainties from Adam Davison
+        * Fixed pileup offset for Final 2011 configurations
+        * Changed all EqualTo() instances to CompareTo() for supporting old ROOT versions
+2013-02-18 S. Schramm : trunk and JetUncertainties-00-08-04
+        * Fixed a bug when fCloseby >= 1.5
+2013-02-19 S. Schramm : trunk and JetUncertainties-00-08-05
+        * Fixed a bug introduced in the previous tag for 2011 and HCP2012 analyses
+2013-03-11 S. Schramm : trunk
+        * Switched getComponentIndex() to public
+2013-03-27 S. Schramm : trunk
+        * Large changes to nJet flavour composition treatment following input from Will Bell
+2013-03-28 S. Schramm : trunk
+        * A few more error checks for the nJet terms, thanks to Will Bell
+2013-04-11 S. Schramm : trunk
+        * Changed CloseBy uncertainty to support MC type dependence
+        * Changed MC12a/Pythia8 in Moriond2013 configuration to have zero uncertainty
+        * Changed AFII in Moriond2013 configuration to have the old uncertainty, pending further updates
+2013-04-17 S. Schramm : trunk and JetUncertainties-00-08-06
+        * AFII uncertainty is now also zero for Moriond2013 configurations
+        * Creating tag now with these changes following approval discussion on April 17 Jet/EtMiss meeting
+2013-05-01 S. Schramm : trunk and JetUncertainties-00-08-07
+        * Addition of a stronger correlations scenario for the Moriond2013 JES
+        * Small memory leak fix in Vectorize functions
+

@@ -1,0 +1,597 @@
+#define HWWlvqqAnalysis_cxx
+// The class definition in HWWlvqqAnalysis.h has been generated automatically
+// by the ROOT utility TTree::MakeSelector(). This class is derived
+
+#include "HWWlvqqAnalysis.h"
+#include <TH2.h>
+#include <TStyle.h>
+#include <iostream>
+using namespace std;
+
+
+
+
+void HWWlvqqAnalysis::Begin(TTree * /*tree*/)
+{
+  TString option = GetOption();
+  for( int i = 0 ; i < 100 ; i++ ) cut[i] = 0;
+  // please make sure to initialize all histograms to 0, otherwise there will be potential memory leak
+ 
+ 
+  Sphericity = 0;
+  Aplanarity = 0;
+  ExpAplanarity = 0;
+  ST = 0;
+  Centrality = 0;
+  HT = 0;
+  pT1 = 0;
+  EF_J110_passed_ht =0;
+  EF_J110_passed_pt1 =0;
+  EF_J145_pJ110_ht =0;
+  EF_J145_pJ110_pt1 =0;
+  EF_J170_ht600_pJ110_ht =0;
+  EF_J170_ht600_pJ110_pt1 =0;
+  EF_J170_ht700_pJ110_ht =0;
+  EF_J170_ht700_pJ110_pt1 =0;
+  HT_2j = 0;
+  HT_3j = 0;
+  HT_4j = 0;
+  
+}
+
+void HWWlvqqAnalysis::SlaveBegin(TTree * /*tree*/)
+{
+  TString option = GetOption();
+  ParseOptions(option);
+
+
+  fprintf(stdout, "\nLaTech: Slave begin : p2 \n");fflush(stdout);
+  
+  
+
+
+
+
+  EF_J110_passed_ht = new TH1F("EF_J110_passed_ht","EF_J110_passed_ht", 300 , 0, 3000)  ;
+  EF_J110_passed_ht->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J110_passed_ht);
+  EF_J110_passed_ht->GetXaxis()->SetTitle("H_{T}");
+  EF_J110_passed_ht->GetYaxis()->SetTitle("Entries");
+
+
+  EF_J110_passed_pt1 = new TH1F("EF_J110_passed_pt1","EF_J110_passed_pt1", 300 , 0, 3000)  ;
+  EF_J110_passed_pt1->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J110_passed_pt1);
+  EF_J110_passed_pt1->GetXaxis()->SetTitle("TriJet Mass");
+  EF_J110_passed_pt1->GetYaxis()->SetTitle("Entries");
+
+
+
+
+  EF_J145_pJ110_ht = new TH1F("EF_J145_pJ110_ht","EF_J145_pJ110_ht", 300 , 0, 3000)  ;
+  EF_J145_pJ110_ht->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J145_pJ110_ht);
+  EF_J145_pJ110_ht->GetXaxis()->SetTitle("TriJet Mass");
+  EF_J145_pJ110_ht->GetYaxis()->SetTitle("Entries");
+
+
+  EF_J145_pJ110_pt1 = new TH1F("EF_J145_pJ110_pt1","EF_J145_pJ110_pt1", 300 , 0, 3000)  ;
+  EF_J145_pJ110_pt1->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J145_pJ110_pt1);
+  EF_J145_pJ110_pt1->GetXaxis()->SetTitle("TriJet Mass");
+  EF_J145_pJ110_pt1->GetYaxis()->SetTitle("Entries");
+
+
+
+  EF_J170_ht600_pJ110_ht = new TH1F("EF_J170_ht600_pJ110_ht","EF_J170_ht600_pJ110_ht", 300 , 0, 3000)  ;
+  EF_J170_ht600_pJ110_ht->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J170_ht600_pJ110_ht);
+  EF_J170_ht600_pJ110_ht->GetXaxis()->SetTitle("TriJet Mass");
+  EF_J170_ht600_pJ110_ht->GetYaxis()->SetTitle("Entries");
+
+
+  EF_J170_ht600_pJ110_pt1 = new TH1F("EF_J170_ht600_pJ110_pt1","EF_J170_ht600_pJ110_pt1", 300 , 0, 3000)  ;
+  EF_J170_ht600_pJ110_pt1->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J170_ht600_pJ110_pt1);
+  EF_J170_ht600_pJ110_pt1->GetXaxis()->SetTitle("P_{t1}");
+  EF_J170_ht600_pJ110_pt1->GetYaxis()->SetTitle("Entries");
+
+
+
+  EF_J170_ht700_pJ110_ht = new TH1F("EF_J170_ht700_pJ110_ht","EF_J170_ht700_pJ110_ht", 300 , 0, 3000)  ;
+  EF_J170_ht700_pJ110_ht->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J170_ht700_pJ110_ht);
+  EF_J170_ht700_pJ110_ht->GetXaxis()->SetTitle("TriJet Mass");
+  EF_J170_ht700_pJ110_ht->GetYaxis()->SetTitle("Entries");
+
+
+  EF_J170_ht700_pJ110_pt1 = new TH1F("EF_J170_ht700_pJ110_pt1","EF_J170_ht700_pJ110_pt1", 300 , 0, 3000)  ;
+  EF_J170_ht700_pJ110_pt1->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J170_ht700_pJ110_pt1);
+  EF_J170_ht700_pJ110_pt1->GetXaxis()->SetTitle("TriJet Mass");
+  EF_J170_ht700_pJ110_pt1->GetYaxis()->SetTitle("Entries");
+
+
+  
+
+  EF_J180_passed_ht = new TH1F("EF_J180_passed_ht","EF_J180_passed_ht", 300 , 0, 3000)  ;
+  EF_J180_passed_ht->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J180_passed_ht);
+  EF_J180_passed_ht->GetXaxis()->SetTitle("TriJet Mass");
+  EF_J180_passed_ht->GetYaxis()->SetTitle("Entries");
+
+
+  EF_J180_passed_pt1 = new TH1F("EF_J180_passed_pt1","EF_J180_passed_pt1", 300 , 0, 3000)  ;
+  EF_J180_passed_pt1->SetDirectory(0);
+  fOutput->Add((TObject *) EF_J180_passed_pt1);
+  EF_J180_passed_pt1->GetXaxis()->SetTitle("TriJet Mass");
+  EF_J180_passed_pt1->GetYaxis()->SetTitle("Entries");
+
+
+
+
+    
+  
+  
+  Sphericity = new TH1F("Sphericity","Sphericity for all good jets", 40 , 0, 1)  ;
+  Sphericity->SetDirectory(0);
+  fOutput->Add((TObject *) Sphericity);
+  Sphericity->GetXaxis()->SetTitle("Sphericity");
+  Sphericity->GetYaxis()->SetTitle("Entries");
+//  Sphericity->Sumw2();
+
+user.tamsett.016072._00027.merge.dpd-00202668.root
+  Aplanarity = new TH1F("Aplanarity","Aplanarity for all good jets", 72 , 0, 1.8)  ;
+  Aplanarity->SetDirectory(0);
+ fOutput->Add((TObject *) Aplanarity);
+ Aplanarity->GetXaxis()->SetTitle("Aplanarity");
+ Aplanarity->GetYaxis()->SetTitle("Entries");
+// Aplanarity->Sumw2();
+  fprintf(stdout, "\nLaTech: Slave begin : p3 \n");fflush(stdout);
+
+  ExpAplanarity = new TH1F("ExpAplanarity","ExpAplanarity for all good jets", 50 , 0, 5)  ;
+  ExpAplanarity->SetDirectory(0);
+  fOutput->Add((TObject *) ExpAplanarity);
+   ExpAplanarity->GetXaxis()->SetTitle("ExpAplanarity");
+ ExpAplanarity->GetYaxis()->SetTitle("Entries");
+// ExpAplanarity->Sumw2();
+
+
+  ST = new TH1F("ST","ST for all good jets", 60 , 0, 1.2)  ;
+  ST->SetDirectory(0);
+  fOutput->Add((TObject *) ST);
+  ST->GetXaxis()->SetTitle("Transverse Sphericity");
+  ST->GetYaxis()->SetTitle("Entries");
+// ST->Sumw2();
+
+  Centrality = new TH1F("Centrality","Centrality for first two leading jets ", 32 , 0, 1)  ;
+  Centrality->SetDirectory(0);
+  fOutput->Add((TObject *)  Centrality);
+  Centrality->GetXaxis()->SetTitle("Centrality");
+ Centrality->GetYaxis()->SetTitle("Entries");
+//Centrality->Sumw2();
+  fprintf(stdout, "\nLaTech: Slave begin : p4 \n");fflush(stdout);
+
+
+  /*
+
+  HT_2j = new TH1F("HT_2j","HT_2j", 300 , 0, 3000)  ;
+  HT_2j->SetDirectory(0);
+  fOutput->Add((TObject *) HT_2j);
+  HT_2j->GetXaxis()->SetTitle("HT Jet Number >=2");
+  HT_2j->GetYaxis()->SetTitle("Entries");
+
+
+  HT_3j = new TH1F("HT_3j","HT_3j", 300 , 0, 3000)  ;
+  HT_3j->SetDirectory(0);
+  fOutput->Add((TObject *) HT_3j);
+  HT_3j->GetXaxis()->SetTitle("HT Jet Number >=3");
+  HT_3j->GetYaxis()->SetTitle("Entries");
+
+
+
+  HT_4j = new TH1F("HT_4j","HT_4j", 300 , 0, 3000)  ;
+  HT_4j->SetDirectory(0);
+  fOutput->Add((TObject *) HT_4j);
+  HT_4j->GetXaxis()->SetTitle("HT Jet Number >=4");
+  HT_4j->GetYaxis()->SetTitle("Entries");
+
+  */
+
+
+Float_t bins[] = { 450, 600, 750, 900, 1100, 1400, 1800, 2200, 2700, 4000 };
+Int_t  binnum = sizeof(bins)/sizeof(Float_t) - 1; // or just = 9
+//> TH1F* h = new TH1F("n","t", binnum, bins);
+
+//bins = [50, 55, 60, 65, 72, 80, 90, 100, 120, 160 ]
+//  bins = [90, 120, 160, 200, 250, 310, 390, 490, 620, 800, 1040, 1400, 2000]
+//  HT = new TH1F("HT","HT scalar sum of pT for first two leading jets", 200 , 0, 2000)  ;
+  HT = new TH1D("HT","HT scalar sum of pT of all good jets", binnum, bins)  ;
+  HT->SetDirectory(0);
+  fOutput->Add((TObject *) HT);
+  HT->GetXaxis()->SetTitle("HT (GeV)");
+  HT->GetYaxis()->SetTitle("Entries");
+ // HT->Sumw2();
+
+
+
+
+  HT_2j = new TH1D("HT_2j","HT_2j", binnum, bins)  ;
+  HT_2j->SetDirectory(0);
+  fOutput->Add((TObject *) HT_2j);
+  HT_2j->GetXaxis()->SetTitle("HT_2j (GeV)");
+  HT_2j->GetYaxis()->SetTitle("Entries");
+
+
+
+  HT_3j = new TH1D("HT_3j","HT_3j", binnum, bins)  ;
+  HT_3j->SetDirectory(0);
+  fOutput->Add((TObject *) HT_3j);
+  HT_3j->GetXaxis()->SetTitle("HT_3j (GeV)");
+  HT_3j->GetYaxis()->SetTitle("Entries");
+
+
+
+
+  HT_4j = new TH1D("HT_4j","HT_4j", binnum, bins)  ;
+  HT_4j->SetDirectory(0);
+  fOutput->Add((TObject *) HT_4j);
+  HT_4j->GetXaxis()->SetTitle("HT_4j (GeV)");
+  HT_4j->GetYaxis()->SetTitle("Entries");
+
+
+  fprintf(stdout, "\nLaTech: Slave begin : p5 \n");fflush(stdout);
+
+  pT1 = new TH1F("pT1","pT for first leading jet", 100 , 0, 4000)  ;
+  pT1->SetDirectory(0);
+  fOutput->Add((TObject *) pT1);
+  pT1->GetXaxis()->SetTitle("p_{T}(GeV)");
+  pT1->GetYaxis()->SetTitle("Entries");
+fprintf(stdout, "\nLaTech: Slave begin : p6 \n");fflush(stdout);
+
+
+    TAxis *ht_jet = 0;
+ fprintf(stdout, "\nLaTech: Slave begin : p7 \n");fflush(stdout);
+
+}
+
+Bool_t HWWlvqqAnalysis::Process(Long64_t entry)
+{
+  NevtAll++;
+  if (NevtAll % 100000 == 0)
+    cout <<"Number of events processed " << NevtAll << std::endl;
+
+
+  GetEntry(entry);
+ 
+	bool J3j170_L1J75_passed = false;
+  	bool J55_passed = false;
+  	bool J80_passed = false; 
+  	bool J110_passed = false;
+  	bool J145_passed = false;
+  	bool J170_ht600_passed = false;
+  	bool J170_ht700_passed = false;
+  	bool J180_passed = false;   
+  	bool J220_passed = false;
+  	bool J280_passed = false;
+  	bool J360_passed = false;
+
+	 bool J145_passed_emulated = false;
+      	 bool J170_ht600_passed_emulated = false;
+      	 bool J170_ht700_passed_emulated = false;
+	// int vs unsigned int
+
+	for( unsigned int i = 0 ; i < triggers->size(); i++ ) 
+    	 {
+		
+			TString trig = triggers->at(i);
+
+			// these should be on denominator for eff calculation
+			if(trig == "EF_3j170_a4tchad_L1J75") J3j170_L1J75_passed = true;	   
+			if(trig == "EF_j55_a4tchad") J55_passed = true;
+			if(trig == "EF_j80_a4tchad") J80_passed = true;
+			if(trig == "EF_j110_a4tchad") J110_passed = true; 
+			if(trig == "EF_j145_a4tchad") J145_passed = true; 
+			if(trig == "EF_j170_a4tchad_ht600") J170_ht600_passed = true;
+			if(trig == "EF_j170_a4tchad_ht700") J170_ht700_passed = true;
+			if(trig == "EF_j180_a4tchad") J180_passed = true;
+			if(trig == "EF_j220_a4tchad") J220_passed = true;
+			if(trig == "EF_j360_a4tchad") J360_passed = true;
+      	 }
+      
+      	 
+      	 for( unsigned int i = 0 ; i < triggers_emulated->size(); i++ ) 
+    	 {
+    	 	     TString trig_emulated = triggers_emulated->at(i);
+                     if (trig_emulated == "EF_j145_a4tchad") J145_passed_emulated = true;
+                     if (trig_emulated == "EF_j170_a4tchad_ht600") J170_ht600_passed_emulated = true;
+                     if (trig_emulated == "EF_j170_a4tchad_ht700") J170_ht700_passed_emulated = true;
+    	 }
+
+
+
+
+	vector<TLorentzVector>jets_tlv;
+  	TLorentzVector jet;
+
+	bool goodJets = false;
+   
+   	for ( unsigned int i = 0 ; i < jet_pt->size() ; i++ ) 
+         {
+	   //  double wt = event_weight->at(i);
+			
+	   //    if (fabs(jet_y->at(i) - 0.5) >=1.0 ) continue;			
+	   //	if (fabs(jet_y->at(i) - 0.5) >=1.5 ) continue;			
+		if (fabs(jet_y->at(i)) >=1.5 ) continue;			
+     		if (jet_Badness->at(i) >=3 ) continue;
+     		if (jet_pt->at(i) <100000 ) continue;
+    		goodJets = true;
+    		jet.SetPtEtaPhiE(jet_pt->at(i), jet_eta->at(i) ,jet_phi->at(i), jet_e->at(i));
+   			 jets_tlv.push_back(jet);
+          }
+
+	if(!goodJets) return kFALSE;
+
+        if (jets_tlv.size() < 2 ) return kFALSE;
+
+
+
+
+	double mass =0;
+	if (jets_tlv.size() == 3) mass = (jets_tlv[0] + jets_tlv[1] + jets_tlv[2]).M();
+
+
+
+
+
+//////////////////////////////////////////////
+///    Di-Jet Shape Analysis
+//////////////////////////////////////////////
+
+  //if (jets_tlv.size() != 2 ) return kFALSE;
+ 
+  // di-jet selection
+ 
+
+double y_star = 0.5*fabs(jets_tlv[0].Rapidity() - jets_tlv[1].Rapidity());
+double y_boost = 0.5*(jets_tlv[0].Rapidity() + jets_tlv[1].Rapidity());
+
+
+if (y_star >=1.5) return kFALSE;
+//if (y_boost>=0.5) return kFALSE;
+
+
+
+//  for( int i = 0 ; i < (int) jets_tlv.size() ; i++)  ht = ht + jets_tlv[i].Pt();
+  
+
+
+ 
+
+
+
+  // double nx = cos(jets_tlv[i].Phi());
+  
+ 
+	double ht = 0;
+	for( int i = 0 ; i < (int) jets_tlv.size() ; i++)  ht = ht + 0.001*jets_tlv[i].Pt();
+  
+  if ((ht>=450 && ht<600)&& J110_passed ) 
+    {
+           ht_final = ht;
+  
+    }else
+if ((ht>=600 && ht<750)&& J145_passed ) 
+    {
+          ht_final = ht;
+    }else
+
+if ((ht>=750 && ht<900)&& J170_ht600_passed ) 
+    {
+         ht_final = ht;
+      //   ht = ht;
+    }else
+if (ht>=900 && J170_ht700_passed ) 
+    {
+           ht_final = ht;
+      //   ht = ht;
+    }
+
+ 
+
+
+
+        HT_2j->Fill(ht_final, 1);
+
+	if (jets_tlv.size() >= 3 )   HT_3j->Fill(ht_final, 1);
+	if (jets_tlv.size() >= 4 )   HT_4j->Fill(ht_final, 1);
+
+
+
+//////////////////////////////////////////////
+///    Trigger Efficiency 
+//////////////////////////////////////////////
+
+  if(J110_passed ==1)
+    {
+      EF_J110_passed_ht->Fill(ht, 1);
+      //   EF_J110_passed_pt1->Fill(pt1, 1);
+      //   cout<<J145_passed<<endl;
+    }
+      if (J110_passed ==1 && J145_passed_emulated == 1){
+	EF_J145_pJ110_ht->Fill(ht, 1);
+	//	EF_J145_pJ110_pt1->Fill(pt1, 1);
+      }
+      
+      if ( J110_passed ==1 && J170_ht600_passed_emulated == 1)
+	{
+	  EF_J170_ht600_pJ110_ht->Fill(ht, 1);
+	  //	  EF_J170_ht600_pJ110_pt1->Fill(pt1, 1);
+	}
+      
+      if ( J110_passed ==1 && J170_ht700_passed_emulated == 1)
+	{
+	  EF_J170_ht700_pJ110_ht->Fill(ht, 1);
+	  //	  EF_J170_ht700_pJ110_pt1->Fill(pt1, 1);
+	}
+    
+  
+
+
+
+
+      if (jets_tlv[0].Pt() < 100 )cout<<"ERROR:: First leading jet pT < 100 GeV !!  "<< 0.001*jets_tlv[0].Pt()  << endl;
+    
+
+  return kTRUE;
+}
+
+void HWWlvqqAnalysis::SlaveTerminate()
+{
+  // The SlaveTerminate() function is called after all entries or objects
+  // have been processed. When running with PROOF SlaveTerminate() is called
+  // on each slave server.
+
+}
+
+void HWWlvqqAnalysis::Terminate()
+{
+
+
+  TFile *f = new TFile("output.root","RECREATE");
+
+  //Write output Histograms
+  TList *tl = GetOutputList();
+  int l = tl->GetEntries();
+  for ( int i = 0 ; i < l ; i++ )
+  {
+    TObject *o = tl->At(i);
+
+    if ( o->InheritsFrom("TH1") )
+    {
+      cout << "TresChorros: Saving Histogram: "
+          << "  Class: " << o->ClassName()  
+          << "  Name: "<< o->GetName() 
+          << "  Title: " << o->GetTitle()
+          << " " 
+          << endl << flush;
+      o->Write();
+    }
+    }
+  f->Flush();
+  f->Close();  
+
+}
+
+
+
+
+
+
+bool HWWlvqqAnalysis::string_true_false(TString tf)
+{
+  tf.ToLower();
+  bool b = false;
+  if ( tf == "true" ){
+    b = true;
+  }
+  else if ( tf != "false" ) {
+    throw(" option value must be \"true\" or \"false\" ");
+  }
+  return b;
+}
+
+void HWWlvqqAnalysis::ParseOptions(TString p_option)
+{
+
+  do_50_50 = false;
+  left_50 = false;
+  do_mc = false;
+  do_muon = false;
+  ident = "ident_test";
+  input_path = "./";
+  output_path = "../output";
+  lepton_mass = Ok_el_mass;
+
+
+  try
+  {
+    TObjArray *s = p_option.Tokenize(",; \n\015\012");
+    cout << endl << "Okla_ParseOptions: input=" << endl 
+      << p_option << endl;
+
+    for( int i = 0 ; i < s->GetEntriesFast() ; i++)
+    {
+      TString c = ((TObjString *)(*s)[i])->GetString();
+      c.ToLower();
+      cout << endl << "Okla_ParseOptions: directive \"" << c << "\": " << endl;
+
+      TObjArray *t = c.Tokenize("=:");
+
+      if ( 
+        (s->GetEntriesFast() == 1 ) &&
+        ( t->GetEntriesFast() == 1 ) ) throw "Error processing parameters";
+
+      if ( t->GetEntriesFast() != 2 ) throw("invalid var=val or var:val (no space or \",\" allowed around\"=\" or \":\")");
+      TString var = ((TObjString *)(*t)[0])->GetString();
+      TString val = ((TObjString *)(*t)[1])->GetString();
+
+
+      if( var == "identifier" ){
+        ident = val;
+      }
+      else if( var == "input_path" ){
+        input_path = val;
+      }
+      else if( var == "output_path" ){
+        output_path = val;
+      }
+      else if( var == "do_50_50" ){
+        do_50_50 = string_true_false(val);
+      }
+      else if( var == "left_50" ){
+        left_50 = string_true_false(val);
+      }
+      else if( var == "do_mc" ){
+        do_mc = string_true_false(val);
+      }
+      
+      else if( var == "do_muon" ){
+        do_muon = string_true_false(val);
+        if ( do_muon ) lepton_mass = Ok_mu_mass;
+      }
+      
+      else{
+        cout << endl << "throwing exception c:" << c << "   var: "<< var << "  val: " << val << endl; 
+        throw( (const char *)(TString(" unknown var ") + var) );
+      }
+    }
+  }
+  catch(char * e)
+  {
+    cout << endl << "OklaParseOptions: Error: " << e << endl;
+    exit(0);
+  }
+  catch(...)
+  {
+    cout << endl << "OklaParseOptions: Error: invalid parameter: " << endl;
+    cout << p_option << endl;
+    exit(0);
+  }
+}
+
+void HWWlvqqAnalysis::print_usage()
+{
+  cout << endl << "HWWlvqqAnalysis: Usage: " << endl;
+  cout << "HWWlvqqAnalysis *ok;" << endl;
+  cout << "ok = new HWWlvqqAnalysis(\""
+    << "identifier=name "
+    << "input_path=path/ " 
+    << "do_mc=true " 
+    << "do_50_50=true " 
+    << "left_50=true (else right 50%)  " 
+    << "output_path=path/ )\"" 
+    << endl  << "have fun" << endl;
+
+}
+

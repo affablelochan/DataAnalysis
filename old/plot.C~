@@ -1,0 +1,603 @@
+void Higgs_3j()
+{
+     gROOT->SetStyle("Plain");
+     gStyle->SetTitle(0);
+
+     char buf[256];
+     //  char1 buf[256];
+
+     /*
+
+"DPhiJ1J2_3j",
+"DRJ1J2_3j",
+"DEtaJ1J2_3j",
+"DEtaJ1lep_3j",
+"Eta_l_3j",
+"thetalj1_3j",
+"thetalj2_3j",
+"JetPt1_3j",
+"JetPt2_3j",
+"Higgs3j_Wcut",
+"HT_3j",
+"HTjl_3j",
+
+
+
+
+"DPhiJ1J2_2j",
+"DRJ1J2_2j",
+"DEtaJ1J2_2j",
+"DEtaJ1lep_2j",
+
+"Eta_l_2j",
+"thetalj1_2j",
+"thetalj2_2j",
+"JetPt1_2j",
+"JetPt2_2j",
+"Higgs2j_Wcut",
+"HT_2j",
+"HTjl_2j",
+
+     */
+
+
+
+     TFile* f1 = new TFile("ALL-Bkg-Fitst-Half-Training.root");
+     TFile* f2 = new TFile("Higgs-1sthalf.root");
+
+     TH1F *H_dphi_j1j2_3jb = (TH1F*)f1->Get("DPhiJ1J2_3j")->Clone("H_dphi_j1j2_3jb");H_dphi_j1j2_3jb->Sumw2();
+     TH1F *H_dphi_j1j2_3js = (TH1F*)f2->Get("DPhiJ1J2_3j")->Clone("H_dphi_j1j2_3js");H_dphi_j1j2_3js->Sumw2();
+
+     TH1F *H_dr_j1j2_3jb = (TH1F*)f1->Get("DRJ1J2_3j")->Clone("H_dr_j1j2_3jb");H_dr_j1j2_3jb->Sumw2();
+     TH1F *H_dr_j1j2_3js = (TH1F*)f2->Get("DRJ1J2_3j")->Clone("H_dr_j1j2_3js");H_dr_j1j2_3js->Sumw2();
+
+     TH1F *H_deta_j1j2_3jb = (TH1F*)f1->Get("DEtaJ1J2_3j")->Clone("H_deta_j1j2_3jb");H_deta_j1j2_3jb->Sumw2();
+     TH1F *H_deta_j1j2_3js = (TH1F*)f2->Get("DEtaJ1J2_3j")->Clone("H_deta_j1j2_3js");H_deta_j1j2_3js->Sumw2();
+
+     TH1F *H_deta_j1lep_3jb = (TH1F*)f1->Get("DEtaJ1lep_3j")->Clone("H_deta_j1lep_3jb");H_deta_j1lep_3jb->Sumw2();
+     TH1F *H_deta_j1lep_3js = (TH1F*)f2->Get("DEtaJ1lep_3j")->Clone("H_deta_j1lep_3js");H_deta_j1lep_3js->Sumw2();
+
+     TH1F *H_Higgs3j_Wcutb = (TH1F*)f1->Get("Higgs3j_Wcut")->Clone("H_Higgs3j_Wcutb");H_Higgs3j_Wcutb->Sumw2();
+     TH1F *H_Higgs3j_Wcuts = (TH1F*)f2->Get("Higgs3j_Wcut")->Clone("H_Higgs3j_Wcuts");H_Higgs3j_Wcuts->Sumw2();
+
+
+     TH1F *H_HT_3jb = (TH1F*)f1->Get("HT_3j")->Clone("H_HT_3jb");H_HT_3jb->Sumw2();
+     TH1F *H_HT_3js = (TH1F*)f2->Get("HT_3j")->Clone("H_HT_3js");H_HT_3js->Sumw2();
+
+
+
+
+     TH1F *H_JetPt1_3jb = (TH1F*)f1->Get("JetPt1_3j")->Clone("H_JetPt1_3jb");H_JetPt1_3jb->Sumw2();
+     TH1F *H_JetPt1_3js = (TH1F*)f2->Get("JetPt1_3j")->Clone("H_JetPt1_3js");H_JetPt1_3js->Sumw2();
+
+
+     TH1F *H_JetPt2_3jb = (TH1F*)f1->Get("JetPt2_3j")->Clone("H_JetPt2_3jb");H_JetPt2_3jb->Sumw2();
+     TH1F *H_JetPt2_3js = (TH1F*)f2->Get("JetPt2_3j")->Clone("H_JetPt2_3js");H_JetPt2_3js->Sumw2();
+
+     TH1F *H_JetPt2_3jb = (TH1F*)f1->Get("JetPt2_3j")->Clone("H_JetPt2_3jb");H_JetPt2_3jb->Sumw2();
+     TH1F *H_JetPt2_3js = (TH1F*)f2->Get("JetPt2_3j")->Clone("H_JetPt2_3js");H_JetPt2_3js->Sumw2();
+
+
+     TH1F *H_thetaj1_3jb = (TH1F*)f1->Get("thetalj2_3j")->Clone("H_thetaj1_3jb");H_thetaj1_3jb->Sumw2();
+     TH1F *H_thetaj1_3js = (TH1F*)f2->Get("thetalj2_3j")->Clone("H_thetaj1_3js");H_thetaj1_3js->Sumw2();
+
+
+ 
+
+     TH1F *dphi_j1j2_3j = (TH1F*)DPhiJ1J2_3j->Clone("dphi_j1j2_3j");dphi_j1j2_3j->Sumw2();
+     TH1F *dr_j1j2_3j = (TH1F*)DRJ1J2_3j->Clone("dr_j1j2_3j");dr_j1j2_3j->Sumw2();
+     TH1F *deta_j1j2_3j = (TH1F*)DEtaJ1J2_3j->Clone("deta_j1j2_3j");deta_j1j2_3j->Sumw2();
+     TH1F *deta_j1lep_3j = (TH1F*)DEtaJ1lep_3j->Clone("deta_j1lep_3j");deta_j1lep_3j->Sumw2();
+     TH1F *Higgs3j_Wcut_3j = (TH1F*)Higgs3j_Wcut->Clone("Higgs3j_Wcut_3j");Higgs3j_Wcut_3j->Sumw2();
+     TH1F *ht_3j = (TH1F*)HT_3j->Clone("ht_3j");ht_3j->Sumw2();
+     TH1F *jetpt1_3j  = (TH1F*)JetPt1_3j->Clone("jetpt1_3j");jetpt1_3j->Sumw2();
+     TH1F *jetpt2_3j = (TH1F*)JetPt2_3j->Clone("jetpt2_3j");jetpt2_3j->Sumw2();
+     TH1F *Theta1j1_3j = (TH1F*)thetalj2_3j->Clone("Theta1j1_3j");Theta1j1_3j->Sumw2();
+
+
+
+     dphi_j1j2_3j ->SetLineColor(4);  
+     dr_j1j2_3j ->SetLineColor(4); 
+     deta_j1j2_3j ->SetLineColor(4); 
+     deta_j1lep_3j ->SetLineColor(4); 
+     Higgs3j_Wcut_3j ->SetLineColor(4); 
+     ht_3j ->SetLineColor(4); 
+     jetpt1_3j ->SetLineColor(4); 
+     jetpt2_3j ->SetLineColor(4); 
+     Theta1j1_3j ->SetLineColor(4); 
+
+
+ 
+//     dphi_j1j2_3j ->SetLineColor(4); 
+//     dr_j1j2_3j ->SetLineColor(4); 
+
+
+
+
+     TCanvas* c1 = new TCanvas("c1","c1");
+       c1->Divide(3,3);  
+
+     char* chfun = "[0]+[1]*x +[2]*x*x +[3]*x*x*x" ;  // +[4]*x*x*x*x";
+  
+    
+
+          
+      // ############ Delta Phi Between Two Jets #################
+     
+     
+     double dphi_j1j2_3j_b = H_dphi_j1j2_3jb->Integral();
+     H_dphi_j1j2_3jb->Scale(1./dphi_j1j2_3j_b);
+     double dphi_j1j2_3j_s = H_dphi_j1j2_3js->Integral();
+     H_dphi_j1j2_3js->Scale(1./dphi_j1j2_3j_s);
+     dphi_j1j2_3j->Divide(H_dphi_j1j2_3js,H_dphi_j1j2_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(1);
+
+     // ----------------------------------
+     for (int i=1;i<=dphi_j1j2_3j->GetNbinsX();i++){
+       if(dphi_j1j2_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(dphi_j1j2_3j->GetBinContent(i));
+       double e = TMath::Log(dphi_j1j2_3j->GetBinContent(i)+dphi_j1j2_3j->GetBinError(i));
+       e = e-m;
+       dphi_j1j2_3j->SetBinContent(i,m);
+       dphi_j1j2_3j->SetBinError(i,e);
+     }
+     //------------------------------------    
+     
+     dphi_j1j2_3j->Draw("h");
+     dphi_j1j2_3j->SetYTitle("log(S/B)");
+     dphi_j1j2_3j->SetXTitle("Delta Phi (j1, j2)");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x + [2]*x*x"; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+     TF1* fun_dphi_j1j2_3j = new TF1("fun_dphi_j1j2_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     dphi_j1j2_3j->Fit(fun_dphi_j1j2_3j, "", "" , 0.1,3.1);
+     dphi_j1j2_3j->Draw("e"); 
+     
+     
+     /////////////////////////////////////////////////////////////////
+
+
+   
+     double dr_j1j2_3j_b = H_dr_j1j2_3jb->Integral();
+     H_dr_j1j2_3jb->Scale(1./dr_j1j2_3j_b);
+     double dr_j1j2_3j_s = H_dr_j1j2_3js->Integral();
+     H_dr_j1j2_3js->Scale(1./dr_j1j2_3j_s);
+     dr_j1j2_3j->Divide(H_dr_j1j2_3js,H_dr_j1j2_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(2);
+
+     // ----------------------------------
+     for (int i=1;i<=dr_j1j2_3j->GetNbinsX();i++){
+       if(dr_j1j2_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(dr_j1j2_3j->GetBinContent(i));
+       double e = TMath::Log(dr_j1j2_3j->GetBinContent(i)+dr_j1j2_3j->GetBinError(i));
+       e = e-m;
+       dr_j1j2_3j->SetBinContent(i,m);
+       dr_j1j2_3j->SetBinError(i,e);
+     }
+     //------------------------------------    
+     
+     dr_j1j2_3j->Draw("h");
+     dr_j1j2_3j->SetYTitle("log(S/B)");
+     dr_j1j2_3j->SetXTitle("dR (j1, j2)");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x + [2]*x*x";// +[3]*x*x*x+[4]*x*x*x*x"; 
+
+     TF1* fun_dr_j1j2_3j = new TF1("fun_dr_j1j2_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     dr_j1j2_3j->Fit(fun_dr_j1j2_3j, "", "" , 0.,4);
+     dr_j1j2_3j->Draw("e"); 
+     
+
+     /////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+   
+     double deta_j1j2_3j_b = H_deta_j1j2_3jb->Integral();
+     H_deta_j1j2_3jb->Scale(1./deta_j1j2_3j_b);
+     double deta_j1j2_3j_s = H_deta_j1j2_3js->Integral();
+     H_deta_j1j2_3js->Scale(1./deta_j1j2_3j_s);
+     deta_j1j2_3j->Divide(H_deta_j1j2_3js,H_deta_j1j2_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(3);
+
+     // ----------------------------------
+     for (int i=1;i<=deta_j1j2_3j->GetNbinsX();i++){
+       if(deta_j1j2_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(deta_j1j2_3j->GetBinContent(i));
+       double e = TMath::Log(deta_j1j2_3j->GetBinContent(i)+deta_j1j2_3j->GetBinError(i));
+       e = e-m;
+       deta_j1j2_3j->SetBinContent(i,m);
+       deta_j1j2_3j->SetBinError(i,e);
+     }
+     //------------------------------------    
+     
+     deta_j1j2_3j->Draw("h");
+     deta_j1j2_3j->SetYTitle("log(S/B)");
+     deta_j1j2_3j->SetXTitle("Delta Eta (j1, j2)");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x+ [2]*x*x";   ///  +[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+     TF1* fun_deta_j1j2_3j = new TF1("fun_deta_j1j2_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     deta_j1j2_3j->Fit(fun_deta_j1j2_3j, "", "" , 0,1.7);
+     deta_j1j2_3j->Draw("e"); 
+     
+
+
+     /////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+     double deta_j1lep_3j_b = H_deta_j1lep_3jb->Integral();
+     H_deta_j1lep_3jb->Scale(1./deta_j1lep_3j_b);
+     double deta_j1lep_3j_s = H_deta_j1lep_3js->Integral();
+     H_deta_j1lep_3js->Scale(1./deta_j1lep_3j_s);
+     deta_j1lep_3j->Divide(H_deta_j1lep_3js,H_deta_j1lep_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(4);
+
+     // ----------------------------------
+     for (int i=1;i<=deta_j1lep_3j->GetNbinsX();i++){
+       if(deta_j1lep_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(deta_j1lep_3j->GetBinContent(i));
+       double e = TMath::Log(deta_j1lep_3j->GetBinContent(i)+deta_j1lep_3j->GetBinError(i));
+       e = e-m;
+       deta_j1lep_3j->SetBinContent(i,m);
+       deta_j1lep_3j->SetBinError(i,e);
+     }
+     //------------------------------------    
+     
+     deta_j1lep_3j->Draw("h");
+     deta_j1lep_3j->SetYTitle("log(S/B)");
+     deta_j1lep_3j->SetXTitle("Delta Eta (j1, lepton)");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x+ [2]*x*x";   ///  +[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+     TF1* fun_deta_j1lep_3j = new TF1("fun_deta_j1lep_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     deta_j1lep_3j->Fit(fun_deta_j1lep_3j, "", "" , 0,4.5);
+     deta_j1lep_3j->Draw("e"); 
+     
+
+
+     //////////////////////////////////////////////////////////////////////////
+// H_Higgs3j_Wcuts 
+// Higgs3j_Wcut_3j
+// H_HT_3js
+// HT_jj_3j
+
+
+
+  //////////////////////////////////////////////////////////////////////////////
+
+
+     //          HT
+
+
+
+     double ht_3j_b = H_HT_3jb->Integral();
+     H_HT_3jb->Scale(1./ht_3j_b);
+     double ht_3j_s = H_HT_3js->Integral();
+     H_HT_3js->Scale(1./ht_3j_s);
+     ht_3j->Divide(H_HT_3js,H_HT_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(5);
+
+     // ----------------------------------
+     for (int i=1;i<=ht_3j->GetNbinsX();i++){
+       if(ht_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(ht_3j->GetBinContent(i));
+       double e = TMath::Log(ht_3j->GetBinContent(i)+ht_3j->GetBinError(i));
+       e = e-m;
+       ht_3j->SetBinContent(i,m);
+       ht_3j->SetBinError(i,e);
+     }
+     //------------------------------------    
+     
+     ht_3j->Draw("h");
+     ht_3j->SetYTitle("log(S/B)");
+     ht_3j->SetXTitle("HT (jpt1 + jpt2)");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x+ [2]*x*x"; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+     TF1* fun_ht_3j = new TF1("fun_ht_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     ht_3j->Fit(fun_ht_3j, "", "" , 0,250);
+     ht_3j->Draw("e"); 
+     
+
+
+     /////////////////////////////////////////////////////////
+
+
+     double Higgs3j_Wcut_3j_b = H_Higgs3j_Wcutb->Integral();
+     H_Higgs3j_Wcutb->Scale(1./Higgs3j_Wcut_3j_b);
+     double Higgs3j_Wcut_3j_s = H_Higgs3j_Wcuts->Integral();
+     H_Higgs3j_Wcuts->Scale(1./Higgs3j_Wcut_3j_s);
+     Higgs3j_Wcut_3j->Divide(H_Higgs3j_Wcuts,H_Higgs3j_Wcutb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(6);
+
+     // ----------------------------------
+     for (int i=1;i<=Higgs3j_Wcut_3j->GetNbinsX();i++){
+       if(Higgs3j_Wcut_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(Higgs3j_Wcut_3j->GetBinContent(i));
+       double e = TMath::Log(Higgs3j_Wcut_3j->GetBinContent(i)+Higgs3j_Wcut_3j->GetBinError(i));
+       e = e-m;
+       Higgs3j_Wcut_3j->SetBinContent(i,m);
+       Higgs3j_Wcut_3j->SetBinError(i,e);
+     }
+     //------------------------------------    
+     
+     Higgs3j_Wcut_3j->Draw("h");
+     Higgs3j_Wcut_3j->SetYTitle("log(S/B)");
+     Higgs3j_Wcut_3j->SetXTitle("Mww");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x+ [2]*x*x+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+     TF1* fun_Higgs3j_Wcut_3j = new TF1("fun_Higgs3j_Wcut_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     Higgs3j_Wcut_3j->Fit(fun_Higgs3j_Wcut_3j, "", "" , 150,500);
+     Higgs3j_Wcut_3j->Draw("e"); 
+     
+
+
+
+
+     ///////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+     double H_JetPt1_3jb_b = H_JetPt1_3jb->Integral();
+     H_JetPt1_3jb->Scale(1./H_JetPt1_3jb_b);
+     double H_JetPt1_3js_s = H_JetPt1_3js->Integral();
+     H_JetPt1_3js->Scale(1./H_JetPt1_3js_s);
+     jetpt1_3j->Divide(H_JetPt1_3js,H_JetPt1_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(7);
+
+//      // ----------------------------------
+     for (int i=1;i<=jetpt1_3j->GetNbinsX();i++){
+       if(jetpt1_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(jetpt1_3j->GetBinContent(i));
+       double e = TMath::Log(jetpt1_3j->GetBinContent(i)+jetpt1_3j->GetBinError(i));
+       e = e-m;
+       jetpt1_3j->SetBinContent(i,m);
+       jetpt1_3j->SetBinError(i,e);
+     }
+//      //------------------------------------    
+ 
+
+
+     //   jetpt1_3j->Draw("h");
+
+//      h_jpt1_3j->SetYTitle("log(S/B)");
+//      h_jpt1_3j->SetXTitle("Delta Phi (j1, j2)");
+//      //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+//      char* chfun_ap = "[0]+[1]*x+ [2]*x*x+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+//      TF1* fun_h_jpt1_3j = new TF1("fun_h_jpt1_3j",chfun_ap);
+//      //  apla->SetLineWidth(1);
+//      //      apla->SetLineStyle(2);
+//      //      apla->SetLineColor(4);
+//      //   h_jpt1_3j->Fit(fun_h_jpt1_3j, "", "" , 150,500);
+//      h_jpt1_3j->Draw("e"); 
+     
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+     double H_JetPt2_3jb_b = H_JetPt2_3jb->Integral();
+     H_JetPt2_3jb->Scale(1./H_JetPt2_3jb_b);
+     double H_JetPt2_3js_s = H_JetPt2_3js->Integral();
+     H_JetPt2_3js->Scale(1./H_JetPt2_3js_s);
+     jetpt2_3j->Divide(H_JetPt2_3js,H_JetPt2_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(8);
+
+//      // ----------------------------------
+     for (int i=1;i<=jetpt2_3j->GetNbinsX();i++){
+       if(jetpt2_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(jetpt2_3j->GetBinContent(i));
+       double e = TMath::Log(jetpt2_3j->GetBinContent(i)+jetpt2_3j->GetBinError(i));
+       e = e-m;
+       jetpt2_3j->SetBinContent(i,m);
+       jetpt2_3j->SetBinError(i,e);
+     }
+//      //------------------------------------    
+ 
+
+
+     jetpt2_3j->Draw("h");
+
+     jetpt2_3j->SetYTitle("log(S/B)");
+     jetpt2_3j->SetXTitle("Jet pT 2");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x+ [2]*x*x+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+     TF1* fun_jetpt2_3j = new TF1("fun_jetpt2_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     jetpt2_3j->Fit(fun_jetpt2_3j, "", "" , 25,100);
+     jetpt2_3j->Draw("e"); 
+  
+
+
+   
+     /////////////////////////////////////////////////////////////////
+
+
+
+
+     double H_thetaj1_3j_b = H_thetaj1_3jb->Integral();
+     H_thetaj1_3jb->Scale(1./H_thetaj1_3j_b);
+     double H_thetaj1_3j_s = H_thetaj1_3js->Integral();
+     H_thetaj1_3js->Scale(1./H_thetaj1_3j_s);
+     Theta1j1_3j->Divide(H_thetaj1_3js,H_thetaj1_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(9);
+
+//      // ----------------------------------
+     for (int i=1;i<=Theta1j1_3j->GetNbinsX();i++){
+       if(Theta1j1_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(Theta1j1_3j->GetBinContent(i));
+       double e = TMath::Log(Theta1j1_3j->GetBinContent(i)+Theta1j1_3j->GetBinError(i));
+       e = e-m;
+       Theta1j1_3j->SetBinContent(i,m);
+       Theta1j1_3j->SetBinError(i,e);
+     }
+//      //------------------------------------    
+ 
+
+
+     Theta1j1_3j->Draw("h");
+
+     Theta1j1_3j->SetYTitle("log(S/B)");
+     Theta1j1_3j->SetXTitle("Delta theta (lepton, j2)");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x+ [2]*x*x+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+     TF1* fun_Theta1j1_3j = new TF1("fun_Theta1j1_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     Theta1j1_3j->Fit(fun_Theta1j1_3j, "", "" , 0,3);
+     Theta1j1_3j->Draw("e"); 
+     
+
+
+
+
+
+     
+     /*
+
+     // ===============================================================
+
+
+
+   
+     double dr_j1j2_3j_b = H_dr_j1j2_3jb->Integral();
+     H_dr_j1j2_3jb->Scale(1./dr_j1j2_3j_b);
+     double dr_j1j2_3j_s = H_dr_j1j2_3js->Integral();
+     H_dr_j1j2_3js->Scale(1./dr_j1j2_3j_s);
+     dr_j1j2_3j->Divide(H_dr_j1j2_3js,H_dr_j1j2_3jb,1,1,"B");
+ 
+     //    TF1* fun_apla_H = new TF1("fun_apla_H",apla);
+      
+     c1->cd(4);
+
+     // ----------------------------------
+     for (int i=1;i<=dr_j1j2_3j->GetNbinsX();i++){
+       if(dr_j1j2_3j->GetBinContent(i) == 0.) continue;
+       double m = TMath::Log(dr_j1j2_3j->GetBinContent(i));
+       double e = TMath::Log(dr_j1j2_3j->GetBinContent(i)+dr_j1j2_3j->GetBinError(i));
+       e = e-m;
+       dr_j1j2_3j->SetBinContent(i,m);
+       dr_j1j2_3j->SetBinError(i,e);
+     }
+     //------------------------------------    
+     
+     dr_j1j2_3j->Draw("h");
+     dr_j1j2_3j->SetYTitle("log(S/B)");
+     dr_j1j2_3j->SetXTitle("Delta Phi (j1, j2)");
+     //     char* chfun_ap = "[0]+[1]*x + [2]*x*x" ; //+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+     char* chfun_ap = "[0]+[1]*x + [2]*x*x+[3]*x*x*x" ;  // +[4]*x*x*x*x"; 
+
+     TF1* fun_dr_j1j2_3j = new TF1("fun_dr_j1j2_3j",chfun_ap);
+     //  apla->SetLineWidth(1);
+     //      apla->SetLineStyle(2);
+     //      apla->SetLineColor(4);
+     dr_j1j2_3j->Fit(fun_dr_j1j2_3j, "", "" , 0,6);
+     dr_j1j2_3j->Draw("e"); 
+     
+     */
+
+
+
+
+
+
+
+
+
+  
+     // save fits
+     TFile* fout = new TFile("HiggsFit_3j.root","RECREATE");
+  
+
+
+
+
+fun_dphi_j1j2_3j->Write();
+fun_dr_j1j2_3j->Write();
+fun_deta_j1j2_3j->Write();
+fun_deta_j1lep_3j->Write();
+fun_ht_3j->Write();
+fun_Higgs3j_Wcut_3j->Write();
+fun_jetpt2_3j->Write();
+fun_Theta1j1_3j->Write();
+
+
+
+
+
+
+
+
+
+
+
+
+
+     //   fun_deta_j1lep_3j->Write();
+
+     //     fun_dphi_j1j2_3j->Write();
+     //     fun_dr_j1j2_3j->Write();
+   
+ 
+     fout->Close();
+}

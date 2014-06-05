@@ -1,0 +1,83 @@
+10
+
+dir
+590750
+svn+ssh://subraman@svn.cern.ch/reps/atlasoff/PhysicsAnalysis/AnalysisCommon/PATCore/tags/PATCore-00-00-16
+svn+ssh://subraman@svn.cern.ch/reps/atlasoff
+
+
+
+2013-10-31T15:10:27.171598Z
+568105
+krumnack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4525493e-7705-40b1-a816-d608a930855b
+
+python
+dir
+
+share
+dir
+
+Root
+dir
+
+cmt
+dir
+
+scripts
+dir
+
+src
+dir
+
+ChangeLog
+file
+
+
+
+
+2014-04-01T23:38:58.000000Z
+0e3d6a7c3968c62169bdfc3195c8681e
+2013-09-24T09:34:49.935803Z
+562663
+kkoeneke
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1908
+
+PATCore
+dir
+

@@ -1,0 +1,19 @@
+Tree ... qcd
+jet_pt 	vector<float>
+jet_e 	vector<float>
+jet_eta 	vector<float>
+jet_raw_eta 	vector<float>
+jet_phi 	vector<float>
+jet_y 	vector<float>
+jet_Badness 	vector<int>
+jet_isUgly 	vector<int>
+jet_jvtxf 	vector<float>
+jet_origin 	vector<float>
+lbn 	Int_t
+RunNumber 	Int_t
+EventNumber 	Int_t
+n_pvtx 	Int_t
+good_pvtx 	Int_t
+mu 	Float_t
+triggers 	vector<string>
+triggers_emulated 	vector<string>

@@ -1,0 +1,78 @@
+
+#######################################
+#
+#  JESProvider Input Settings
+#    Reduced set of nuisance parameters from final 2011 iteration of the in-situ JES
+#    Reduction was applied globally
+#    November 13, 2012
+#
+#
+#######################################
+
+JESUncertaintyRootFile:       JES_2011/Final/JESUncertainty_WeakerCorrelations_2011.root
+
+#######################################
+#
+#   Settings for JES Components
+#
+#######################################
+
+JESComponent.1.Desc:            Effective JES Uncertainty Component 1
+JESComponent.1.Name:            EffectiveNP_1
+JESComponent.1.Type:            Special
+
+JESComponent.2.Desc:            Effective JES Uncertainty Component 2
+JESComponent.2.Name:            EffectiveNP_2
+JESComponent.2.Type:            Special
+
+JESComponent.3.Desc:            Effective JES Uncertainty Component 3
+JESComponent.3.Name:            EffectiveNP_3
+JESComponent.3.Type:            Special
+
+JESComponent.4.Desc:            Effective JES Uncertainty Component 4
+JESComponent.4.Name:            EffectiveNP_4
+JESComponent.4.Type:            Special
+
+JESComponent.5.Desc:            Effective JES Uncertainty Component 5
+JESComponent.5.Name:            EffectiveNP_5
+JESComponent.5.Type:            Special
+
+JESComponent.6.Desc:            Effective JES Uncertainty Component 6
+JESComponent.6.Name:            EffectiveNP_6restTerm
+JESComponent.6.Type:            Special
+
+
+#######################################
+
+JESComponent.7.Desc:           Eta intercalibration: stat uncertainties
+JESComponent.7.Name:           EtaIntercalibration_TotalStat
+JESComponent.7.Type:           Statistical
+
+JESComponent.8.Desc:           Eta intercalibration: MC generator modelling uncertainty
+JESComponent.8.Name:           EtaIntercalibration_Modelling
+JESComponent.8.Type:           Modelling
+
+JESComponent.9.Desc:           Pileup: Offset, mu term
+JESComponent.9.Name:           Pileup_OffsetMu
+JESComponent.9.Type:           Special
+
+JESComponent.10.Desc:           Pileup: Offset, NPV term
+JESComponent.10.Name:           Pileup_OffsetNPV
+JESComponent.10.Type:           Special
+
+JESComponent.11.Desc:           High Pt term (temporary, 2010 uncertainty)
+JESComponent.11.Name:           SingleParticle_HighPt
+JESComponent.11.Type:           Special
+
+JESComponent.12.Desc:           Closure of the calibration, relative to MC11b
+JESComponent.12.Name:           RelativeNonClosure_MCTYPE
+JESComponent.12.Type:           Special
+
+
+#######################################
+
+# Settings for pile-up uncertainty
+Pileup.MuRef:   8.5
+Pileup.NPVRef:  6.0
+#
+#######################################

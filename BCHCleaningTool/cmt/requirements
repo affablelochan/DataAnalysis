@@ -1,0 +1,65 @@
+# Package definition
+package BCHCleaningTool
+author S. Schramm
+author C. Doglioni
+
+
+# Athena policy - first use statement
+use AtlasPolicy             AtlasPolicy-*
+
+
+# Public dependencies
+public
+use EventInfo               EventInfo-*             Event
+use JetEvent                JetEvent-*              Reconstruction/Jet
+use AthenaBaseComps         AthenaBaseComps-*       Control
+use GaudiInterface          GaudiInterface-*        External
+
+#use JetAnalysisEDM          JetAnalysisEDM-*        Reconstruction/Jet/JetAnalysisTools
+
+use TileTripReader          TileTripReader-*        PhysicsAnalysis/TileID
+
+use AtlasROOT               AtlasROOT-*             External
+
+# Private dependencies
+private
+
+use PathResolver            PathResolver-*          Tools
+use PileupReweighting       PileupReweighting-*     PhysicsAnalysis/AnalysisCommon
+
+end_private
+
+
+# macros
+apply_tag   ROOTBasicLibs
+apply_tag   ROOTMathLibs
+
+
+
+# Set directories that CMT should know about
+branches src BCHCleaningTool Root share python
+
+
+## Create a named installed library
+#library BCHCleaningToolLib "../Root/BCHCleaningToolBase.cxx *.cxx"
+#apply_pattern named_installed_library library=BCHCleaningToolLib
+#
+## Create a component library
+#library BCHCleaningTool *.cxx components/*.cxx
+#macro_append BCHCleaningTool_dependencies "BCHCleaningToolLib"
+#apply_pattern component_library
+
+# Create a dual-use library
+apply_pattern dual_use_library files="*.cxx ../Root/*.cxx"
+
+
+# job options and python modules
+apply_pattern declare_joboptions files="*.py"
+apply_pattern declare_python_modules files="*.py"
+
+
+# ROOT data files
+apply_pattern declare_runtime files="*.root"
+
+
+
